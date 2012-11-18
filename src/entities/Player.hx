@@ -42,7 +42,6 @@ class Player extends PhysicsEntity
         friction.y = 0;
         
         type = CollisionType.PLAYER;
-
         
         setHitbox( Std.int( sprite.width * scaleFactor ), Std.int( sprite.height * scaleFactor ) );
 	}

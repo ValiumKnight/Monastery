@@ -23,11 +23,9 @@ class GravityGun extends Entity
 	{
 		super(x, y);
 		
-		//_pointX = x;
-		//_pointY = y;
-		
 		_sprite = new PreRotation("gfx/space_gun.png");
 		_sprite.scale = scaleFactor;
+        
 		graphic = _sprite;
 	}
 	

@@ -19,11 +19,18 @@ class Bullet extends PhysicsEntity
 		_deltaX = dX;
 		_deltaY = dY;
 		_angle = angle;
-		orb = new Spritemap("gfx/sprite_orb2.png", 21, 21);
+        
+        var sprite:Spritemap = new Spritemap("gfx/sprite_orb2.png", 21, 21);
+        
+        sprite.scale = 0.5;
+        
+		orb = sprite;
 		orb.add( "shoot", [0, 1, 2, 3], 10, true );
 		graphic = orb;
         setHitbox(6, 6);
 		exists = true;
+        
+        type = CollisionType.BULLET;
 	}
     
 	private function setAnimations()
@@ -41,6 +48,16 @@ class Bullet extends PhysicsEntity
 			world.remove(this); 
 			exists = false;
 		}
+        
+        var gp:GravityPoint = cast( collide( CollisionType.GRAVITY_POINT, x, y ), GravityPoint );
+        
+        if ( gp != null )
+        {
+            gp.enabled = !gp.enabled;
+            world.remove(this);
+            exists = false;
+        }
+        
 		setAnimations();
 	}
 	private function setSpeed()

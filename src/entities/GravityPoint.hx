@@ -1,5 +1,6 @@
 package entities;
 
+import com.haxepunk.HXP;
 import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.graphics.Spritemap;
@@ -47,5 +48,14 @@ class GravityPoint extends Entity
 	public override function update()
     {
         super.update();
+        
+        if ( enabled )
+        {
+            world.add( circle );
+        }
+        else
+        {
+            world.remove( circle );    
+        }
     }
 }

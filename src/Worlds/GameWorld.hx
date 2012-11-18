@@ -81,6 +81,11 @@ class GameWorld extends World
         {            
             for ( gravity_point in gravity_points )
             {
+                if ( !gravity_point.enabled )
+                {
+                    continue;
+                }
+                
                 if ( entity.type == CollisionType.PLAYER )
                 {
                     if (entity.collide( CollisionType.GRAVITY_POINT, entity.x, entity.y ) != null )
