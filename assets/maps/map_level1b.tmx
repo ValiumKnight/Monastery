@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="60" height="47" tilewidth="8" tileheight="8">
+ <tileset firstgid="1" name="tiles" tilewidth="8" tileheight="8">
+  <image source="tiles.png" width="128" height="8"/>
+ </tileset>
+ <layer name="main" width="60" height="47">
+  <data encoding="base64" compression="zlib">
+   eJzt0LENgDAAA0FTQQNk/2mhRnQ0xLqXPMB5JBlmZhNtvXeWbn/xbuntCC9vT7y8TfHyNsXL2xQvb1O8vE3x8jbFy9sUL29TvLxN8fI2xZss5Xt6x+cX/x2v2fy7ADbiLlk=
+  </data>
+ </layer>
+ <objectgroup name="objects" width="60" height="47">
+  <object type="gravitypoint" x="176" y="243"/>
+  <object type="gravitypoint" x="327" y="242"/>
+ </objectgroup>
+</map>

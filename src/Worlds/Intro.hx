@@ -6,6 +6,7 @@ import com.haxepunk.HXP;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 import com.haxepunk.graphics.Text;
+import entities.Bubble;
 
 /**
  * ...
@@ -14,10 +15,12 @@ import com.haxepunk.graphics.Text;
 
 class Intro extends World 
 {
+	
     public function new() 
     {
         super( );
-        
+        add( new Bubble(180, 10, "hello"));
+		
         var titleText:Text = new Text("Press X to Start");
         var textEntity:Entity = new Entity(0,0,titleText);
         textEntity.x = (HXP.width/2)-(titleText.width/2);
