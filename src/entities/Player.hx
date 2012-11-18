@@ -12,13 +12,8 @@ class Player extends PhysicsEntity
 	private var flip:Bool = false;
     private var sprite:Spritemap;
     private var scaleFactor:Float = 0.5;
-<<<<<<< HEAD
 	private var _fuel:Float = 100;
-    public var Gun:GravityGun;
-=======
     public var gun:GravityGun;
->>>>>>> 376e489f3ba59a5e2df9225bcbfc1b358f39ab58
-
 	public function new(x:Float, y:Float) 
 	{
 		super(x, y);
@@ -40,13 +35,8 @@ class Player extends PhysicsEntity
 		Input.define("up", [Key.UP, Key.W, Key.SPACE]);
         Input.define("down", [Key.DOWN, Key.S]);
 		
-<<<<<<< HEAD
-		gravity.y = 0.5;
-        maxVelocity.y = 1.5;
-=======
 		gravity.y = 0.1;
-        maxVelocity.y = 12;
->>>>>>> 376e489f3ba59a5e2df9225bcbfc1b358f39ab58
+        maxVelocity.y = 1.5;
         maxVelocity.x = 1.5;
         friction.x = 1;
         friction.y = 0;
