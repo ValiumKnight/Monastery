@@ -13,7 +13,7 @@ class GravityPoint extends Entity
 {
     private var _sprite: Spritemap;
     
-    public var radius:Float;
+    public var radius:Int;
     
     public var circle:Entity;
 
@@ -23,11 +23,11 @@ class GravityPoint extends Entity
         
         radius = 40;
         
-        circle = new Entity( x, y );
+        circle = new Entity( x - radius*3, y - radius*3 );
         
-        var circle_image:Image = Image.createCircle(40, 660066);
+        var circle_image:Image = Image.createCircle(radius*3, 660066);
         
-        circle_image.alpha = 0.8;
+        circle_image.alpha = 0.4;
         
         circle.graphic = circle_image;
         
@@ -35,7 +35,7 @@ class GravityPoint extends Entity
         
         _sprite.scale = 0.5;
         
-        type = CollisionType.STATIC_SOLID;
+        type = CollisionType.GRAVITY_POINT;
         
         setHitbox( Std.int( _sprite.width * _sprite.scale ), Std.int( _sprite.height * _sprite.scale ) );
 		
@@ -45,10 +45,5 @@ class GravityPoint extends Entity
 	public override function update()
     {
         super.update();
-    }
-    
-    public function enable( )
-    {
-        world.add( circle );
     }
 }

@@ -35,8 +35,7 @@ class GravityGun extends Entity
 	// set velocity based on keyboard input
     private function handleInput()
     {
-		
-		trace(Input.mouseX + "," + Input.mouseY);
+		//trace(Input.mouseX + "," + Input.mouseY);
 		
 		_pointX = Input.mouseX - x;
 		_pointY = Input.mouseY - y;
