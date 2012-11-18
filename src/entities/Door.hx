@@ -5,8 +5,10 @@ import com.haxepunk.graphics.Image;
 import com.haxepunk.utils.Input;
 import com.haxepunk.HXP;
 import com.haxepunk.utils.Key;
+import worlds.Credits;
 import worlds.GameWorld;
 import worlds.Intro;
+import worlds.Credits;
 
 /**
  * ...
@@ -38,12 +40,13 @@ class Door extends Entity
 			if (Intro.cur_lvl == 2)
 			{
 				Intro.cur_lvl = 0;
+				HXP.world = new Credits();
 			}
 			else
 			{
 				Intro.cur_lvl++;
+				HXP.world = new GameWorld( Intro.level[Intro.cur_lvl] );
 			}
-            HXP.world = new GameWorld( Intro.level[Intro.cur_lvl] );
 		}
 	}
 	
