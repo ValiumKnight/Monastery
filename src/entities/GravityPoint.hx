@@ -60,7 +60,7 @@ class GravityPoint extends Entity
         // Define our particles
         gravityEmitter.newType("explode",[0]);
         gravityEmitter.setAlpha("explode",1,0);
-        gravityEmitter.setMotion("explode", 0, 50, 2, 360, -40, -0.5, Ease.quadOut );
+        gravityEmitter.setMotion("explode", 0, 50, 4, 360, -40, -0.5, Ease.quadOut );
         gravityEmitter.setColor("explode", 0xa4639e, 0xff00ff );
         gravityEmitter.relative = false;
 	}
