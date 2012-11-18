@@ -7,6 +7,7 @@ import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 import com.haxepunk.graphics.Text;
 import entities.Bubble;
+import entities.GravityPoint;
 
 /**
  * ...
@@ -20,6 +21,10 @@ class Intro extends World
     {
         super( );
         add( new Bubble(180, 10, "hello"));
+        
+        add( new Bubble(300, 50, "hello"));
+        
+        add( new GravityPoint( 430, 100 ) );
 		
         var titleText:Text = new Text("Press X to Start");
         var textEntity:Entity = new Entity(0,0,titleText);
