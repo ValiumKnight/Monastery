@@ -15,9 +15,10 @@ import worlds.GameWorld;
 class Door extends Entity
 {
     private var _sprite: Image;
+    
 	public static var unlocked: Bool = false;
 
-	public function new(x:Int, y:Int) 
+	public function new(x:Int, y:Int)
 	{
 		super(x, y);
         
@@ -30,14 +31,10 @@ class Door extends Entity
 	
 	public override function update()    
 	{ 
-		var player:Player = cast(collide( CollisionType.PLAYER , x , y ), Player);
-		
-		if ( player != null  && unlocked)
+		if ( unlocked && cast(collide( CollisionType.PLAYER , x , y ) != null ) )
 		{
 			var gameWorld:GameWorld = cast( world, GameWorld );
-            gameWorld._world = gameWorld._nextWorld;
-			gameWorld._nextWorld = "maps/map_level2.tmx" ;
-            HXP.world = new GameWorld( gameWorld._world, gameWorld._nextWorld );
+            HXP.world = new GameWorld( gameWorld._nextWorld, gameWorld._world );
 		}
 	}
 	
