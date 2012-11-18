@@ -18,14 +18,13 @@
     <property name="quantity" value="0.05"/>
    </properties>
   </object>
-  <object type="elevator" x="195" y="105" width="14" height="93"/>
   <object type="crate" x="200" y="88"/>
   <object type="crate" x="269" y="30" width="14" height="13"/>
   <object type="crate" x="108" y="170"/>
   <object type="crate" x="126" y="155"/>
   <object type="crate" x="142" y="164"/>
   <object type="player" x="18" y="140" width="10" height="11"/>
-  <object type="pusher" x="109" y="212" width="72" height="6"/>
   <object type="crate" x="102" y="76" width="10" height="9"/>
+  <object type="gravitypoint" x="215" y="163"/>
  </objectgroup>
 </map>
