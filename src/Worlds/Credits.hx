@@ -14,34 +14,21 @@ import entities.GravityPoint;
  * @author Pumpkin Eaters
  */
 
-class Intro extends World 
+class Credits extends World 
 {
-	public static var level:Array<String>; 
-	public static var cur_lvl: Int = 0;
 	
     public function new() 
     {
         super( );
-        add( new Bubble(180, 10, "hello"));
-        
-        add( new Bubble(300, 50, "hello"));
-        
-        add( new GravityPoint( 430, 100 ) );
 		
-		level = new Array<String>( );
-		
-		level.push ("maps/map_level1.tmx");
-		level.push ("maps/map_level2.tmx");
-		level.push ("maps/map_level3.tmx");
-		
-        var titleText:Text = new Text("Press X to Start");
+        var titleText:Text = new Text("Thank You For Playing! \nPress Y to Start Again!");
         var textEntity:Entity = new Entity(0,0,titleText);
         textEntity.x = (HXP.width/2)-(titleText.width/2);
         textEntity.y = (HXP.height / 2) - (titleText.height / 2);
         
         add(textEntity);
         
-        var splashText:Text = new Text( "Monastery", 100, 10, 640, 480 );
+        var splashText:Text = new Text( "Monastery", 100, 5, 640, 480 );
         splashText.color = 0x00ff00;
         splashText.size = 32;
         
@@ -50,15 +37,22 @@ class Intro extends World
         splashEntity.y = 100;
         
         add(splashEntity);
+		
+		
+		var creditText:Text = new Text("Andrea Della Corte \nRob Filippi \nMike Minella \n(Team Pumpkin Eaters)");
+        var creditEntity:Entity = new Entity(220, 220,creditText);
+        
+        add(creditEntity);
+		
+		
     }
     
     override public function update() 
     {
-        if (Input.check(Key.X)) 
+        if (Input.check(Key.Y)) 
         {
             HXP.screen.color = 0x222233;
-
-            HXP.world=new GameWorld( level[cur_lvl] );
+            HXP.world=new Intro( );
         }
     }
 }
