@@ -16,6 +16,8 @@ class GravityPoint extends Entity
     public var radius:Int;
     
     public var circle:Entity;
+    
+    public var enabled:Bool;
 
 	public function new(x:Int, y:Int) 
 	{
