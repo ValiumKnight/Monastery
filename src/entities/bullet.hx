@@ -23,6 +23,7 @@ class Bullet extends PhysicsEntity
 		orb.add( "shoot", [0, 1, 2, 3], 10, true );
 		graphic = orb;
         setHitbox(6, 6);
+		exists = true;
 	}
     
 	private function setAnimations()
