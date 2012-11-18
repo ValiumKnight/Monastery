@@ -5,16 +5,19 @@
  </tileset>
  <layer name="main" width="60" height="47">
   <data encoding="base64" compression="zlib">
-   eJzt2csKgCAURdErBUX08P+/NoOGNxDRwtM+sGcNXNjMaGaRiKijptQh2uZ4Z9Pdbnjx6gwvXqXhxas0vHiVhhdvi4W7Wt/l7sv7DZnVHP8zXqXhxas0vHiVhlfD672BDabrvQzeW6Cy1xteDe/T8P7PO6bWypWs9hmuFsfbopK9cS68eIl66ARRBTix
+   eJztmckOgzAMBU176KIu/P/XFg499RkHN6UkmpHeBRIro4AVKaOZjYQQ0lBOU56d5i58zxYzVBqzNQ/DF99P8M2N2Rp8te9QEDVnb7C/+CrwzY3ZGs/X60FvvHdRD/s37C++CnzXjSn9v2v3gbW+pWcrW3ge1fplz+N7xleBbxvgW36e3PvZUZHd31bBF9+e6NVX3YEdLe7PLfbgmdlB3QX2ur+eA759+Hrgi+8Slym3IIfk2qK6mVxN9+1S1Nxv6mVq10jtNWXAlxDi5QUFXTaZ
   </data>
  </layer>
  <objectgroup name="objects" width="60" height="47">
   <object type="door" x="420" y="308"/>
   <object type="gravitypoint" x="377" y="151"/>
-  <object type="furnace" x="43" y="287" width="41" height="28"/>
+  <object type="furnace" x="235" y="145" width="41" height="28"/>
   <object type="spikes" x="187" y="330" width="20" height="21"/>
   <object type="spikes" x="239" y="330" width="20" height="21"/>
   <object type="spikes" x="264" y="330" width="20" height="21"/>
   <object type="spikes" x="213" y="330" width="20" height="21"/>
+  <object type="spikes" x="27" y="330" width="20" height="21"/>
+  <object type="spikes" x="53" y="330" width="20" height="21"/>
+  <object type="spikes" x="79" y="330" width="20" height="21"/>
  </objectgroup>
 </map>

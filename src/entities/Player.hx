@@ -118,7 +118,7 @@ class Player extends PhysicsEntity
         
         fuelBar.setHealth( Std.int( _actualFuel ) );
 		
-		trace ("FUEL =" + _actualFuel + "%");
+		//trace ("FUEL =" + _actualFuel + "%");
     }
 	
 	//Set the animation based on 

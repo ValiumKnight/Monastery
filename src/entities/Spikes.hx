@@ -21,9 +21,19 @@ class Spikes extends Entity
         _sprite = new Image("gfx/spikes.png");
 		
 		graphic = _sprite;
-        
-        type = CollisionType.STATIC_SOLID;
-        
-        setHitbox( _sprite.width, _sprite.height );
+		
+		setHitbox( 23, 32);
+	}
+	
+	public override function update()    
+	{ 
+		var player:Player = cast(collide( CollisionType.PLAYER , x , y ), Player);
+		
+		if ( player != null )
+		{	      
+			player.x = 100;
+			player.y = 50;
+			trace("colliding with spikes");
+		}
 	}
 }
