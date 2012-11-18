@@ -26,6 +26,7 @@ class Player extends PhysicsEntity
     private var jetpackSfx:Sfx;
     public var fuelBar:FuelBar;
     public var gun:GravityGun;
+    public var bullet:Bullet;
     
 	public function new(x:Float, y:Float) 
 	{

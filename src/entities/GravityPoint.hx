@@ -18,7 +18,10 @@ import worlds.GameWorld;
 
 class GravityPoint extends Entity
 {
-    private var _sprite: Spritemap;
+    private var _sprite_on: Image;
+    private var _sprite_off: Image;
+    private var _sprite_b_on: Image;
+    private var _sprite_b_off: Image;
     
     public var radius:Int;
     
@@ -43,21 +46,22 @@ class GravityPoint extends Entity
         
         count = Std.int( Math.random( ) * 20 );
         
-        _sprite = new Spritemap("gfx/gravity_point_off.png");        
+        _sprite_on = new Image("gfx/gravity_point_on.png");
+        _sprite_off = new Image("gfx/gravity_point_off.png");
+        _sprite_b_on = new Image("gfx/gravity_point_b_on.png");
+        _sprite_b_off = new Image("gfx/gravity_point_b_off.png");
         
         gravityOnSfx = new Sfx( "sfx/gravity_on.wav" );
         
         type = CollisionType.GRAVITY_POINT;
         
-        setHitbox( Std.int( _sprite.width ), Std.int( _sprite.height ) );
-		
-		graphic = _sprite;
+        setHitbox( Std.int( _sprite_on.width ), Std.int( _sprite_on.height ) );
         
         gravityEmitter = new Emitter(new BitmapData(2, 2), 3, 3);
         
         graphic = new Graphiclist( );
         
-        cast( graphic, Graphiclist ).add( _sprite );
+        cast( graphic, Graphiclist ).add( _sprite_off );
         cast( graphic, Graphiclist ).add( gravityEmitter );
         
         // Define our particles
@@ -78,15 +82,14 @@ class GravityPoint extends Entity
             
             if ( this == GameWorld.button_gp )
             {
-                _sprite = new Spritemap("gfx/gravity_point_b_on.png");
+                cast( graphic, Graphiclist ).add( _sprite_b_on );
                 gravityEmitter.setColor("explode", 0x1EEA37, 0x649B6C );
             }
             else
             {
-                _sprite = new Spritemap("gfx/gravity_point_on.png");
+                cast( graphic, Graphiclist ).add( _sprite_on );
                 gravityEmitter.setColor("explode", 0xa4639e, 0xff00ff );
             }
-            cast( graphic, Graphiclist ).add( _sprite );
             cast( graphic, Graphiclist ).add( gravityEmitter );
             gravityEmitter.emit("explode", x + width / 2, y + height / 2);
         }
@@ -95,13 +98,12 @@ class GravityPoint extends Entity
             cast( graphic, Graphiclist ).removeAll( );
             if ( this == GameWorld.button_gp )
             {
-                _sprite = new Spritemap("gfx/gravity_point_b_off.png");
+                cast( graphic, Graphiclist ).add( _sprite_b_off );
             }
             else
             {
-                _sprite = new Spritemap("gfx/gravity_point_off.png");
+                cast( graphic, Graphiclist ).add( _sprite_off );
             }
-            cast( graphic, Graphiclist ).add( _sprite );
         }
         
         if ( count % 6 == 0 )
