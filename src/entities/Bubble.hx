@@ -16,11 +16,11 @@ class Bubble extends Entity
 {
     private var _sprite: Image;
 
-	public function new(x:Int, y:Int) 
+	public function new(x:Int, y:Int, text:String ) 
 	{
 		super(x, y);
         
-        _sprite = new Image("gfx/speech.png");
+        _sprite = new Image("gfx/small_orb.png");
 		
 		graphic = _sprite;
 	}

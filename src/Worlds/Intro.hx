@@ -19,7 +19,7 @@ class Intro extends World
     public function new() 
     {
         super( );
-        add( new Bubble(180, 10) );
+        add( new Bubble(180, 10, "hello"));
 		
         var titleText:Text = new Text("Press X to Start");
         var textEntity:Entity = new Entity(0,0,titleText);
