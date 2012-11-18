@@ -14,6 +14,8 @@ import com.matttuttle.PhysicsEntity;
 
 class GameWorld extends World
 {
+    private var Player:Player;
+    
     public var dynamic_entities:Array<PhysicsEntity>;
     public var gravity_points:Array<GravityPoint>;    
     
@@ -24,11 +26,9 @@ class GameWorld extends World
         dynamic_entities = new Array<PhysicsEntity>( );
         gravity_points = new Array<GravityPoint>( );
         
-        add( new Player( 50, 50 ) );
-        
-		add( new GravityGun( 50, 35 ) );
-        
-        //dynamic_entities.push( player );
+        Player = new Player( 50, 50 );
+		add(Player);
+        add(Player.Gun);
 		
         createMap( );
 	}
