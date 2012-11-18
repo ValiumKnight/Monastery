@@ -22,8 +22,6 @@ class Door extends Entity
 		
 		graphic = _sprite;
         
-        type = CollisionType.STATIC_SOLID;
-        
         setHitbox( _sprite.width, _sprite.height );
 	}
 }

@@ -21,6 +21,7 @@ class Player extends PhysicsEntity
     private var scaleFactor:Float = .5;
 	private var _actualFuel:Float = 16;
     private var _maxFuel:Int = 16;
+    private var _takenBefore:Bool = false;
     private var explosionEmitter:Emitter;
     private var jetpackSfx:Sfx;
     public var fuelBar:FuelBar;
@@ -160,7 +161,11 @@ class Player extends PhysicsEntity
 			}
 			else if ( plant != null )
 			{
-                new Sfx( "music/hello-friend.mp3" ).play( );
+                if ( !_takenBefore )
+                {
+                    _takenBefore = true;
+                    new Sfx( "music/hello-friend.mp3" ).play( );
+                }
 				_equiped = true;
 			}
 		}

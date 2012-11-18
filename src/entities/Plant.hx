@@ -50,13 +50,17 @@ class Plant extends PhysicsEntity
 	//Set the animation based on 
 	private function setAnimations()
     {
-		if ( collide( CollisionType.FURNACE , x , y ) != null )
+        var furnace:Furnace = cast( collide( CollisionType.FURNACE , x , y ), Furnace );
+        
+		if ( furnace != null )
 		{	
 			var player:Player = cast(collide( CollisionType.PLAYER , x , y ), Player);
 			
 			if (player != null ) {
 				player._equiped = false;
 			}
+            
+            furnace.burnPlant( );
             
 			destroy();
 		}
