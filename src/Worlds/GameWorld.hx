@@ -28,13 +28,19 @@ class GameWorld extends World
 	{
 		super ( );
         
+        var background:Entity = new Entity( );
+        
+        background.graphic = new Image( "gfx/interior_spaceship.png" );
+        
+        add( background );
+        
         ost = new Sfx( "music/steve_counting-sheep-01-320.mp3" );
         
         dynamic_entities = new Array<PhysicsEntity>( );
         gravity_points = new Array<GravityPoint>( );
         
         player = new Player( 100, 50 );
-		plant = new Plant (65, 80, "space_gun.png");
+		plant = new Plant (65, 80, "evil_plant.png");
 		
 		add(player);
         add(player.gun);
@@ -53,7 +59,7 @@ class GameWorld extends World
     public function createMap( )
     {
         // create the map, set the assets in your nmml file to bytes
-        var e = new TmxEntity("maps/map_level1.tmx");
+        var e = new TmxEntity("maps/map_level1b.tmx");
 
         // load layers named bottom, main, top with the appropriate tileset
         e.loadGraphic("gfx/tiles.png", ["main"]);
@@ -76,7 +82,7 @@ class GameWorld extends World
                 {
                     add( new Spikes( object.x, object.y ) );
                 }
-                
+                    
                 if ( object.type == "gravitypoint" )
                 {
                     gravity_points.push( new GravityPoint( object.x, object.y ) );
@@ -91,11 +97,10 @@ class GameWorld extends World
       
         for ( gravity_point in gravity_points )
         {
-            add( gravity_point );      
-            //add( gravity_point.circle );
+            add( gravity_point );
         }
 
-        add(e);
+        add( e );
     }
     
     public override function update( )
