@@ -24,6 +24,8 @@ class Plant extends PhysicsEntity
         
 		graphic = _plant_sprite;
 		
+		layer = 1;
+		
 		gravity.y = 0.5;
         maxVelocity.y = 1.1;
         maxVelocity.x = 1.5;
@@ -44,7 +46,16 @@ class Plant extends PhysicsEntity
 	//Set the animation based on 
 	private function setAnimations()
     {
-		
+		if ( collide( CollisionType.FURNACE , x , y ) != null )
+		{	
+			var player:Player = cast(collide( CollisionType.PLAYER , x , y ), Player);
+			
+			if (player != null ) {
+				player._equiped = false;
+			}
+			trace ("The Plant has been slaughtered for dinner!");
+			destroy();
+		}
     }
 	
 	public function setCords(newX, newY)
@@ -61,6 +72,10 @@ class Plant extends PhysicsEntity
         
         setAnimations( );
 		
-    }	
+    }
+	public function destroy()
+	{
+		world.remove(this);
+	}
 	
 }

@@ -6,7 +6,7 @@ import com.haxepunk.tmx.TmxEntity;
 import com.haxepunk.tmx.TmxObjectGroup;
 import com.haxepunk.World;
 import com.haxepunk.graphics.Image;
-import entities.Block;
+import entities.Furnace;
 import entities.Door;
 import entities.GravityGun;
 import entities.GravityPoint;
@@ -45,7 +45,7 @@ class GameWorld extends World
         player.gun.layer = 1;
         
         dynamic_entities.push( player );
-        //dynamic_entities.push( plant );
+        dynamic_entities.push( plant );
 		
         createMap( );
 	}
@@ -67,14 +67,9 @@ class GameWorld extends World
         {
             for ( object in objectGroup.objects )
             {
-                if ( object.type == "crate" )
-                {
-                    add( new Block( object.x, object.y ) );
-                }                
-				
 				if ( object.type == "furnace" )
                 {
-                    add( new Block( object.x, object.y ) );
+                    add( new Furnace( object.x, object.y ) );
                 }				
 				
 				if ( object.type == "spikes" )
@@ -123,6 +118,14 @@ class GameWorld extends World
                 }
                 
                 if ( entity.type == CollisionType.PLAYER )
+                {
+                    if (entity.collide( CollisionType.GRAVITY_POINT, entity.x, entity.y ) != null )
+                    {
+                        continue;
+                    }
+                }
+				
+				if ( entity.type == CollisionType.PLANT )
                 {
                     if (entity.collide( CollisionType.GRAVITY_POINT, entity.x, entity.y ) != null )
                     {

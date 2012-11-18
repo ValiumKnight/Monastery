@@ -161,7 +161,6 @@ class Player extends PhysicsEntity
 			}
 			else if ( plant != null )
 			{	      
-
 				_equiped = true;
 			}
 		}

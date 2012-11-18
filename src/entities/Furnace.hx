@@ -10,7 +10,7 @@ import com.haxepunk.utils.Key;
  * @author Rob Filippi
  */
 
-class Block extends Entity
+class Furnace extends Entity
 {
     private var _sprite: Image;
 
@@ -22,7 +22,7 @@ class Block extends Entity
 		
 		graphic = _sprite;
         
-        type = CollisionType.STATIC_SOLID;
+        type = CollisionType.FURNACE;
         
         setHitbox( _sprite.width, _sprite.height );
 	}
