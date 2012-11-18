@@ -9,7 +9,7 @@ import worlds.GameWorld;
 
 /**
  * ...
- * @author me
+ * @author Pumpkin Eaters
  */
 
 class Spikes extends Entity
@@ -36,7 +36,9 @@ class Spikes extends Entity
 		{
 			player._equiped = false;
             
-            HXP.world = new GameWorld( GameWorld._lastLoadedWorld );
+            var gameWorld:GameWorld = cast( world, GameWorld );
+            
+            HXP.world = new GameWorld( gameWorld._world, gameWorld._nextWorld );
 		}
 	}
 }

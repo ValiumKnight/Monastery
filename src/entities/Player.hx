@@ -32,10 +32,7 @@ class Player extends PhysicsEntity
 		
 		gun = new GravityGun( 50, 35 );
         
-        fuelBar = new FuelBar( );
-        
-        fuelBar.x = HXP.screen.width - 50;
-        fuelBar.y = 80;
+        fuelBar = new FuelBar( HXP.screen.width - 50, 80 );
         
         fuelBar.layer = 1;
         
@@ -158,7 +155,8 @@ class Player extends PhysicsEntity
 				_equiped = false;
 			}
 			else if ( plant != null )
-			{	      
+			{
+                new Sfx( "music/hello-friend.mp3" ).play( );
 				_equiped = true;
 			}
 		}

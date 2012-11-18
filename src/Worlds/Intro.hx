@@ -7,6 +7,11 @@ import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 import com.haxepunk.graphics.Text;
 
+/**
+ * ...
+ * @author Pumpkin Eaters
+ */
+
 class Intro extends World 
 {
     public function new() 
@@ -20,7 +25,7 @@ class Intro extends World
         
         add(textEntity);
         
-        var splashText:Text = new Text("Monastery", 100, 10, 640, 480);
+        var splashText:Text = new Text( "Monastery", 100, 10, 640, 480 );
         splashText.color = 0x00ff00;
         splashText.size = 32;
         
@@ -35,7 +40,7 @@ class Intro extends World
     {
         if (Input.check(Key.X)) {
             HXP.screen.color = 0x222233;
-            HXP.world=new GameWorld( "maps/map_level1b.tmx" );
+            HXP.world=new GameWorld( "maps/map_level1.tmx", "maps/map_level2.tmx" );
         }
     }
 }

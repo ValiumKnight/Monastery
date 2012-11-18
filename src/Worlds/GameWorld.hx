@@ -21,16 +21,16 @@ class GameWorld extends World
     public var player:Player;
     public var dynamic_entities:Array<PhysicsEntity>;
     public var gravity_points:Array<GravityPoint>;
-    private var _world:String;
-    public static var _lastLoadedWorld:String; 
+    public var _world:String;
+    public var _nextWorld:String;
     
-	public function new(world:String) 
+	public function new(world:String, nextWorld:String) 
 	{
 		super ( );
         
         _world = world;
         
-        _lastLoadedWorld = world;
+        _nextWorld = nextWorld;
         
         var background:Entity = new Entity( );
         

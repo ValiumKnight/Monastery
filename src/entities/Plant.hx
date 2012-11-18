@@ -13,7 +13,6 @@ class Plant extends PhysicsEntity
     private var _plant_sprite: Spritemap;
 	private var _pointX: Float;
 	private var _pointY: Float;
-	private var _shoot: Bool = false;
 	private var scaleFactor:Float = 0.25;
 
 	public function new(x:Float, y:Float, image:String) 
