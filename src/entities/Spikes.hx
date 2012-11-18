@@ -28,12 +28,18 @@ class Spikes extends Entity
 	public override function update()    
 	{ 
 		var player:Player = cast(collide( CollisionType.PLAYER , x , y ), Player);
+		var plant:Plant = cast(collide( CollisionType.PLANT , x , y ), Plant);
 		
 		if ( player != null )
-		{	      
+		{	 
 			player.x = 100;
 			player.y = 50;
-			trace("colliding with spikes");
+			player._equiped = false;
+		}
+		if ( plant != null )
+		{
+			plant.x = 65;
+			plant.y = 80;
 		}
 	}
 }

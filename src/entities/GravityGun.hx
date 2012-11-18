@@ -19,6 +19,7 @@ class GravityGun extends Entity
 	private var _pointX: Float;
 	private var _pointY: Float;
 	private var _shoot: Bool = false;
+	public static var exists:Bool = false;
 	private var scaleFactor:Float = 0.5;
     
     private var gravityOnSfxs:Array<Sfx>;
@@ -38,6 +39,8 @@ class GravityGun extends Entity
 		_sprite.scale = scaleFactor;
         
 		graphic = _sprite;
+		
+		exists = true;
 
 	}
 	
@@ -84,7 +87,15 @@ class GravityGun extends Entity
         
         setAnimations( );
 		
-    }	
+    }
+	public function destroy() {
+			
+		if (exists)
+		{
+			world.remove(this);
+			exists = false;
+		}
+	}
 	
 
 }
