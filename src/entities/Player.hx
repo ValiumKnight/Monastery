@@ -35,8 +35,8 @@ class Player extends PhysicsEntity
 		Input.define("up", [Key.UP, Key.W, Key.SPACE]);
         Input.define("down", [Key.DOWN, Key.S]);
 		
-		gravity.y = 0.1;
-        maxVelocity.y = 1.5;
+		gravity.y = 0.5;
+        maxVelocity.y = 1.1;
         maxVelocity.x = 1.5;
         friction.x = 1;
         friction.y = 0;
@@ -63,6 +63,14 @@ class Player extends PhysicsEntity
 
 		if ( Input.check("up") && _fuel > 0 )
 		{   
+			if (_fuel <= 75)
+			{
+				maxVelocity.y = 2;
+			}
+			else if (_fuel <= 25)
+			{
+				maxVelocity.y = 3;
+			}
             acceleration.y = -gravity.y * maxVelocity.y;
 			_fuel-=2;
 			
@@ -70,11 +78,13 @@ class Player extends PhysicsEntity
 		
 		if ( _fuel < 100 && !Input.check("up"))
 		{
+			maxVelocity.y = 1.1;
 			_fuel++;
 		}
 		
 		if ( onGround( ) )
 		{
+			maxVelocity.y = 1.1;
 			_fuel = 100;
 		}
 		
