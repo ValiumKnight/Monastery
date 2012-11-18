@@ -63,16 +63,16 @@ class Player extends PhysicsEntity
 
 		if ( Input.check("up") && _fuel > 0 )
 		{   
-			if (_fuel <= 75)
+			if (_fuel <= 70)
 			{
 				maxVelocity.y = 2;
 			}
-			else if (_fuel <= 25)
+			else if (_fuel <= 20)
 			{
 				maxVelocity.y = 3;
 			}
             acceleration.y = -gravity.y * maxVelocity.y;
-			_fuel-=2;
+			_fuel-=3;
 			
 		}
 		
