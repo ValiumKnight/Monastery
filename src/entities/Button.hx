@@ -11,7 +11,8 @@ import worlds.GameWorld;
 
 class Button extends Entity
 {
-    private var _sprite: Image;
+    private var _sprite_on: Image;
+    private var _sprite_off: Image;
     
 	public static var pressed: Bool = false;
 
@@ -19,11 +20,11 @@ class Button extends Entity
 	{
 		super(x, y);
         
-        _sprite = new Image("gfx/block.png");
+        _sprite_off = new Image("gfx/up_button.png");
+		_sprite_on = new Image("gfx/down_button.png");
 		
-		graphic = _sprite;
-        
-        setHitbox( _sprite.width, _sprite.height );
+		graphic = _sprite_off;
+        setHitbox( _sprite_off.width, _sprite_off.height );
 	}
 	
 	public override function update()    
@@ -33,12 +34,17 @@ class Button extends Entity
 		{
 			if ( GameWorld.button_gp != null ) {
 				GameWorld.button_gp.enabled = true;
+				graphic = _sprite_on;
+				setHitbox( _sprite_on.width, _sprite_on.height );
 			}
 		}
 		else
 		{
 			if ( GameWorld.button_gp != null ) {
 				GameWorld.button_gp.enabled = false;
+				graphic = _sprite_off;
+				setHitbox( _sprite_off.width, _sprite_off.height );
+				
 			}
 		}
 	}

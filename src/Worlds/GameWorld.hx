@@ -135,12 +135,13 @@ class GameWorld extends World
 			if (Intro.cur_lvl == 2)
 			{
 				Intro.cur_lvl = 0;
+				HXP.world = new Credits();
 			}
 			else
 			{
 				Intro.cur_lvl++;
+				HXP.world = new GameWorld( Intro.level[Intro.cur_lvl] );
 			}
-            HXP.world = new GameWorld( Intro.level[Intro.cur_lvl] );
 		}
 		
         for ( entity in dynamic_entities ) 

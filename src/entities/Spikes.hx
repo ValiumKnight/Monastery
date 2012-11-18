@@ -6,6 +6,7 @@ import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 import worlds.GameWorld;
 import com.haxepunk.HXP;
+import entities.Door;
 
 /**
  * ...
@@ -39,7 +40,7 @@ class Spikes extends Entity
 			player._equiped = false;
             
             var gameWorld:GameWorld = cast( world, GameWorld );
-            
+            Door.unlocked = false;
             HXP.world = new GameWorld( gameWorld._world );
 		}   
 	}
