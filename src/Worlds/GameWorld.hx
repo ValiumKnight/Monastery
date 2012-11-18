@@ -29,6 +29,7 @@ class GameWorld extends World
         player = new Player( 50, 50 );
 		add(player);
         add(player.gun);
+		
         
         player.layer = 1;
         player.gun.layer = 1;
@@ -41,7 +42,7 @@ class GameWorld extends World
     public function createMap( )
     {
         // create the map, set the assets in your nmml file to bytes
-        var e = new TmxEntity("maps/map02.tmx");
+        var e = new TmxEntity("maps/map_level1.tmx");
 
         // load layers named bottom, main, top with the appropriate tileset
         e.loadGraphic("gfx/tiles.png", ["main"]);
