@@ -37,9 +37,7 @@ class GravityPoint extends Entity
         
         radius = 20;
         
-        _sprite = new Spritemap("gfx/block.png");
-        
-        _sprite.scale = 0.5;
+        _sprite = new Spritemap("gfx/gravity_point_off.png");        
         
         gravityOnSfx = new Sfx( "music/gravity_on.wav" );
         
@@ -78,7 +76,17 @@ class GravityPoint extends Entity
         
         if ( enabled )
         {
-            gravityEmitter.emit("explode",x + width/2, y+ height/2);
+            cast( graphic, Graphiclist ).removeAll( );
+            _sprite = new Spritemap("gfx/gravity_point_on.png");
+            cast( graphic, Graphiclist ).add( _sprite );
+            cast( graphic, Graphiclist ).add( gravityEmitter );
+            gravityEmitter.emit("explode", x + width / 2, y + height / 2);
+        }
+        else
+        {
+            cast( graphic, Graphiclist ).removeAll( );
+            _sprite = new Spritemap("gfx/gravity_point_off.png");
+            cast( graphic, Graphiclist ).add( _sprite );
         }
     }
     
