@@ -165,7 +165,7 @@ class Player extends PhysicsEntity
                 if ( !_takenBefore )
                 {
                     _takenBefore = true;
-                    new Sfx( "sfx/hello-friend.mp3" ).play( );
+                    new Sfx( "sfx/Angry-Chipmunk.mp3" ).play( );
                 }
 				_equiped = true;
 			}
