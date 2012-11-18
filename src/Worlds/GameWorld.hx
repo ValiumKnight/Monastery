@@ -18,11 +18,10 @@ import entities.Spikes;
 
 class GameWorld extends World
 {
-    private var player:Player;
+    public var player:Player;
     private var plant:Plant;
     public var dynamic_entities:Array<PhysicsEntity>;
     public var gravity_points:Array<GravityPoint>;
-    public var ost:Sfx;
     
 	public function new() 
 	{
@@ -34,13 +33,11 @@ class GameWorld extends World
         
         add( background );
         
-        ost = new Sfx( "music/steve_counting-sheep-01-320.mp3" );
-        
         dynamic_entities = new Array<PhysicsEntity>( );
         gravity_points = new Array<GravityPoint>( );
         
         player = new Player( 100, 50 );
-		plant = new Plant (65, 80, "evil_plant.png");
+		plant = new Plant (65, 50, "plant.png");
 		
 		add(player);
         add(player.gun);
@@ -106,11 +103,6 @@ class GameWorld extends World
     public override function update( )
     {
         super.update( );
-        
-        if ( !ost.playing )
-        {
-            ost.play( );
-        }
         
         for ( entity in dynamic_entities ) 
         {            

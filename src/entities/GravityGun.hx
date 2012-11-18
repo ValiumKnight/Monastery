@@ -1,6 +1,7 @@
 package entities;
 
 import com.haxepunk.graphics.PreRotation;
+import worlds.GameWorld;
 import com.haxepunk.HXP;
 import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
@@ -21,6 +22,7 @@ class GravityGun extends Entity
 	private var _shoot: Bool = false;
 	public static var exists:Bool = false;
 	private var scaleFactor:Float = 0.5;
+    private var flipped:Bool = false;
     
     private var gravityOnSfxs:Array<Sfx>;
 
@@ -37,6 +39,8 @@ class GravityGun extends Entity
 		
 		_sprite = new PreRotation("gfx/space_gun.png");
 		_sprite.scale = scaleFactor;
+        
+        layer = 0;
         
 		graphic = _sprite;
 		
@@ -71,6 +75,24 @@ class GravityGun extends Entity
 			world.add(_bullet);
 			_shoot = false;
 		}
+        
+        _sprite.centerOO( );
+        
+        if ( cast( world, GameWorld ).player.flip )
+        {
+            if( !flipped )
+            {
+                _sprite.angle -= 180;
+                _sprite.flipped = false;
+                flipped = true;
+            }
+        }
+        else if ( flipped )
+        {
+            _sprite.angle += 180;
+            _sprite.flipped = true;
+            flipped = false;
+        }
     }
 	
 	public function setCords(newX, newY)

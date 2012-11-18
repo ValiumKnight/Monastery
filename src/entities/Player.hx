@@ -14,7 +14,7 @@ import nme.display.BitmapData;
 
 class Player extends PhysicsEntity
 {
-	private var flip:Bool = false;
+	public var flip:Bool = false;
 	private var _equip:Bool = false;
 	public var _equiped:Bool = false;
     private var sprite:Spritemap;
@@ -38,6 +38,8 @@ class Player extends PhysicsEntity
         fuelBar.y = 80;
         
         fuelBar.layer = 1;
+        
+        layer = 5;
         
         jetpackSfx = new Sfx( "music/jetpack.wav" );
 		
@@ -167,19 +169,18 @@ class Player extends PhysicsEntity
 		
 		if (_equiped && plant != null) 
 		{
-			trace("Plant equiped");
 			gun.destroy();
 			plant.setCords(x, y);
 		}
 		else if (!_equiped && !GravityGun.exists) 
 		{
-			trace("Create Gun!");
 			gun = new GravityGun(x, y);
 			gun.layer = 1;
 			world.add(gun);
 		}
         
         sprite.flipped = flip;
+        
 		if ( gun != null )
 		{
 			gun.setCords(x, y);		
