@@ -4,6 +4,7 @@ import com.haxepunk.graphics.Graphiclist;
 import com.haxepunk.HXP;
 import com.haxepunk.Entity;
 import com.haxepunk.graphics.Spritemap;
+import com.haxepunk.Sfx;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 import com.haxepunk.graphics.Emitter;
@@ -18,9 +19,10 @@ class Player extends PhysicsEntity
     private var scaleFactor:Float = .5;
 	private var _actualFuel:Float = 16;
     private var _maxFuel:Int = 16;
-    public var gun:GravityGun;
     private var explosionEmitter:Emitter;
+    private var jetpackSfx:Sfx;
     public var fuelBar:FuelBar;
+    public var gun:GravityGun;
     
 	public function new(x:Float, y:Float) 
 	{
@@ -34,6 +36,8 @@ class Player extends PhysicsEntity
         fuelBar.y = 80;
         
         fuelBar.layer = 1;
+        
+        jetpackSfx = new Sfx( "music/jetpack.wav" );
 		
 		sprite = new Spritemap( "gfx/swordguy2.png", 48, 32 );
         
@@ -90,6 +94,11 @@ class Player extends PhysicsEntity
 
 		if ( Input.check("up") && _actualFuel > 0 )
 		{   
+            //if ( !jetpackSfx.playing )
+            {
+                jetpackSfx.play( );
+            }
+            
 			if (_actualFuel <= 70)
 			{
 				maxVelocity.y = 3;
@@ -117,7 +126,6 @@ class Player extends PhysicsEntity
         
         fuelBar.setHealth( Std.int( _actualFuel ) );
 		
-		trace ("FUEL =" + _actualFuel + "%");
     }
 	
 	//Set the animation based on 
@@ -126,7 +134,6 @@ class Player extends PhysicsEntity
         if ( Math.abs( velocity.x ) < 0.3 && onGround( ) )
         {
             sprite.play("stand");
-
         }
         else
         {

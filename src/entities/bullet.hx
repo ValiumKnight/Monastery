@@ -53,7 +53,7 @@ class Bullet extends PhysicsEntity
         
         if ( gp != null )
         {
-            gp.enabled = !gp.enabled;
+            gp.toggle( );
             world.remove(this);
             exists = false;
         }
