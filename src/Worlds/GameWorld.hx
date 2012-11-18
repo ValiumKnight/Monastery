@@ -12,6 +12,7 @@ import entities.GravityGun;
 import entities.GravityPoint;
 import entities.Plant;
 import entities.Player;
+import entities.Button;
 import entities.CollisionType;
 import com.matttuttle.PhysicsEntity;
 import entities.Spikes;
@@ -103,7 +104,7 @@ class GameWorld extends World
                 }
 				if ( object.type == "button" )
                 {
-                    //add( door = new Button( object.x, object.y ) );
+                    add( new Button( object.x, object.y ) );
                 }
             }
         }

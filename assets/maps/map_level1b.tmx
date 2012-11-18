@@ -11,5 +11,8 @@
  <objectgroup name="objects" width="60" height="47">
   <object type="gravitypoint" x="176" y="243"/>
   <object type="gravitypoint" x="327" y="242"/>
+  <object type="player" x="155" y="167"/>
+  <object type="plant" x="112" y="165"/>
+  <object type="button" x="244" y="316"/>
  </objectgroup>
 </map>
