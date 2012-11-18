@@ -60,12 +60,10 @@ class Plant extends PhysicsEntity
 		{
 			if (_go_right)
 			{
-				trace("Going Right");
 				acceleration.x = maxVelocity.x;
 			}
 			else if (_go_left)
 			{
-				trace("Going Left");
 				acceleration.x = -maxVelocity.x;
 			}
 		}
@@ -102,8 +100,7 @@ class Plant extends PhysicsEntity
 		handleInput();
 		
 		if ( onWall() )
-		{	    
-			trace("Hit Wall");
+		{
 			if (_go_right)
 			{
 				_go_right = false;
