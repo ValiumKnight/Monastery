@@ -12,6 +12,7 @@ import entities.GravityGun;
 import entities.GravityPoint;
 import entities.Plant;
 import entities.Player;
+import entities.Button;
 import entities.CollisionType;
 import com.matttuttle.PhysicsEntity;
 import entities.Spikes;
@@ -25,6 +26,7 @@ class GameWorld extends World
     public var _world:String;
     public var _nextWorld:String;
     public static var door:Door;
+	public static var button_gp:GravityPoint;
 	
 	public function new(world:String, nextWorld:String) 
 	{
@@ -95,7 +97,11 @@ class GameWorld extends World
                 if ( object.type == "gravitypoint" )
                 {
                     gravity_points.push( new GravityPoint( object.x, object.y ) );
-                }                
+                }
+                if ( object.type == "gravitypoint_b" )
+                {
+                    gravity_points.push( button_gp = new GravityPoint( object.x, object.y ) );
+                } 
 				
 				if ( object.type == "door" )
                 {
@@ -103,7 +109,7 @@ class GameWorld extends World
                 }
 				if ( object.type == "button" )
                 {
-                    //add( door = new Button( object.x, object.y ) );
+                    add( new Button( object.x, object.y ) );
                 }
             }
         }
@@ -153,7 +159,6 @@ class GameWorld extends World
                 
                 if( finalDistance <= gravity_point.radius )
                 {
-                    trace( "zero" );
                     entity.gravity.y = 0;
                         
                     var strength:Float = Math.abs(planetDistance_x) + Math.abs(planetDistance_y);
@@ -164,7 +169,6 @@ class GameWorld extends World
                 }
                 else
                 {
-                    trace( "zero.5" );
                     entity.gravity.y = 0.5;
                 }
             }

@@ -18,7 +18,7 @@ class Player extends PhysicsEntity
 	private var _equip:Bool = false;
 	public var _equiped:Bool = false;
     private var sprite:Spritemap;
-    private var scaleFactor:Float = .5;
+    private var scaleFactor:Float = 1;
 	private var _actualFuel:Float = 16;
     private var _maxFuel:Int = 16;
     private var _takenBefore:Bool = false;
@@ -41,7 +41,7 @@ class Player extends PhysicsEntity
         
         jetpackSfx = new Sfx( "music/jetpack.wav" );
 	
-		sprite = new Spritemap( "gfx/chef.png", 48, 48 );
+		sprite = new Spritemap( "gfx/chef_small.png", 24, 24 );
 
         
 		sprite.add( "stand", [0, 1, 2, 3, 4, 5], 10, true );               
@@ -77,7 +77,7 @@ class Player extends PhysicsEntity
         
         type = CollisionType.PLAYER;
         
-        setHitbox( Std.int( 48 * scaleFactor ), Std.int( 48 * scaleFactor ) );
+        setHitbox( Std.int( sprite.width * scaleFactor ), Std.int( sprite.height * scaleFactor ) );
 	}
 	
 	// set velocity based on keyboard input

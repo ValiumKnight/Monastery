@@ -49,8 +49,6 @@ class GravityPoint extends Entity
         type = CollisionType.GRAVITY_POINT;
         
         setHitbox( Std.int( _sprite.width ), Std.int( _sprite.height ) );
-        
-        trace(  Std.int( _sprite.width ) + " , " + Std.int( _sprite.height ) );
 		
 		graphic = _sprite;
         
