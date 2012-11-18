@@ -36,7 +36,7 @@ class GameWorld extends World
         
         var background:Entity = new Entity( );
         
-        background.graphic = new Image( "gfx/interior_spaceship.png" );
+        background.graphic = new Image( "gfx/space_window.png" );
         
         add( background );
         
@@ -100,6 +100,10 @@ class GameWorld extends World
 				if ( object.type == "door" )
                 {
                     add( door = new Door( object.x, object.y ) );
+                }
+				if ( object.type == "button" )
+                {
+                    //add( door = new Button( object.x, object.y ) );
                 }
             }
         }
