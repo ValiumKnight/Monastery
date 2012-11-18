@@ -142,7 +142,6 @@ class GameWorld extends World
 				Intro.cur_lvl++;
 				HXP.world = new GameWorld( Intro.level[Intro.cur_lvl] );
 			}
-            
 		}
 		
         for ( entity in dynamic_entities ) 

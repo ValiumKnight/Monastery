@@ -47,7 +47,6 @@ class Door extends Entity
 				Intro.cur_lvl++;
 				HXP.world = new GameWorld( Intro.level[Intro.cur_lvl] );
 			}
-            
 		}
 	}
 	
