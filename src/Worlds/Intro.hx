@@ -16,6 +16,8 @@ import entities.GravityPoint;
 
 class Intro extends World 
 {
+	public static var level:Array<String>; 
+	public static var cur_lvl: Int = 0;
 	
     public function new() 
     {
@@ -25,6 +27,12 @@ class Intro extends World
         add( new Bubble(300, 50, "hello"));
         
         add( new GravityPoint( 430, 100 ) );
+		
+		level = new Array<String>( );
+		
+		level.push ("maps/map_level1.tmx");
+		level.push ("maps/map_level2.tmx");
+		level.push ("maps/map_level3.tmx");
 		
         var titleText:Text = new Text("Press X to Start");
         var textEntity:Entity = new Entity(0,0,titleText);
@@ -49,7 +57,7 @@ class Intro extends World
         if (Input.check(Key.X)) 
         {
             HXP.screen.color = 0x222233;
-            HXP.world=new GameWorld( "maps/map_level3.tmx", "maps/map_level1.tmx" );
+            HXP.world=new GameWorld( level[cur_lvl] );
         }
     }
 }

@@ -40,7 +40,7 @@ class Spikes extends Entity
             
             var gameWorld:GameWorld = cast( world, GameWorld );
             
-            HXP.world = new GameWorld( gameWorld._world, gameWorld._nextWorld );
+            HXP.world = new GameWorld( gameWorld._world );
 		}   
 	}
 }
