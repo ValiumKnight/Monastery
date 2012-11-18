@@ -5,11 +5,16 @@
  </tileset>
  <layer name="main" width="60" height="47">
   <data encoding="base64" compression="zlib">
-   eJzt2TsKgDAURNEJCor4yf5XawTLJ6SIqOMduF2aQ9IlS8pERB9qKG2mLYF3lO9W4cXrM7x4nYYXr9Pw4nUaXrx3LJ21Ole7J+83VdZyvGe8TsOL12l48ToNr4c3+gPr5Os9DNFfoLM3Gl4P79Xw/s/bl2bTpsBLRETvagddJzu9
+   eJzt2csKgCAURdErBUX08P+/NoOGNxDRwtM+sGcNXNjMaGaRiKijptQh2uZ4Z9Pdbnjx6gwvXqXhxas0vHiVhhdvi4W7Wt/l7sv7DZnVHP8zXqXhxas0vHiVhlfD672BDabrvQzeW6Cy1xteDe/T8P7PO6bWypWs9hmuFsfbopK9cS68eIl66ARRBTix
   </data>
  </layer>
  <objectgroup name="objects" width="60" height="47">
   <object type="door" x="420" y="308"/>
   <object type="gravitypoint" x="377" y="151"/>
+  <object type="furnace" x="43" y="287" width="41" height="28"/>
+  <object type="spikes" x="187" y="330" width="20" height="21"/>
+  <object type="spikes" x="239" y="330" width="20" height="21"/>
+  <object type="spikes" x="264" y="330" width="20" height="21"/>
+  <object type="spikes" x="213" y="330" width="20" height="21"/>
  </objectgroup>
 </map>
