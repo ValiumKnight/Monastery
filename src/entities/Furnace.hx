@@ -19,7 +19,7 @@ class Furnace extends Entity
 	{
 		super(x, y);
         
-        _sprite = new Image( "gfx/furnace_off.png" );
+        _sprite = new Image("gfx/furnace.png");
 		
 		graphic = _sprite;
         

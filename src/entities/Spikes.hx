@@ -2,10 +2,10 @@ package entities;
 
 import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
-import com.haxepunk.HXP;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 import worlds.GameWorld;
+import com.haxepunk.HXP;
 
 /**
  * ...
@@ -33,12 +33,14 @@ class Spikes extends Entity
 		var plant:Plant = cast(collide( CollisionType.PLANT , x , y ), Plant);
 		
 		if ( player != null )
-		{
+		{	 
+			player.x = 100;
+			player.y = 50;
 			player._equiped = false;
             
             var gameWorld:GameWorld = cast( world, GameWorld );
             
             HXP.world = new GameWorld( gameWorld._world, gameWorld._nextWorld );
-		}
+		}   
 	}
 }

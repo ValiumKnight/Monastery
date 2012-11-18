@@ -19,6 +19,7 @@ import entities.Spikes;
 class GameWorld extends World
 {
     public var player:Player;
+    private var plant:Plant;
     public var dynamic_entities:Array<PhysicsEntity>;
     public var gravity_points:Array<GravityPoint>;
     public var _world:String;
@@ -40,6 +41,20 @@ class GameWorld extends World
         
         dynamic_entities = new Array<PhysicsEntity>( );
         gravity_points = new Array<GravityPoint>( );
+        
+        player = new Player( 100, 50 );
+		plant = new Plant (65, 50, "plant.png");
+		
+		add(player);
+        add(player.gun);
+        add(player.fuelBar);
+		add(plant);
+		
+        player.layer = 1;
+        player.gun.layer = 1;
+        
+        dynamic_entities.push( player );
+        dynamic_entities.push( plant );
 		
         createMap( );
 	}
@@ -47,7 +62,7 @@ class GameWorld extends World
     public function createMap( )
     {
         // create the map, set the assets in your nmml file to bytes
-        var e = new TmxEntity(_world);
+        var e = new TmxEntity("maps/map_level1b.tmx");
 
         // load layers named bottom, main, top with the appropriate tileset
         e.loadGraphic("gfx/tiles.png", ["main"]);
@@ -61,28 +76,10 @@ class GameWorld extends World
         {
             for ( object in objectGroup.objects )
             {
-				if ( object.type == "plant" )
-                {
-                    var plant:Plant = new Plant( object.x, object.y, "plant.png" );
-                    
-                    dynamic_entities.push( plant );
-                    add( plant );
-                }
-                
-                if ( object.type == "player" )
-                {
-                    player = new Player( object.x, object.y );
-                    
-                    dynamic_entities.push( player );
-                    add(player);
-                    add(player.gun);
-                    add(player.fuelBar);
-                }
-				
-                if ( object.type == "furnace" )
+				if ( object.type == "furnace" )
                 {
                     add( new Furnace( object.x, object.y ) );
-                }
+                }				
 				
 				if ( object.type == "spikes" )
                 {

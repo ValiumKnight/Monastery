@@ -38,7 +38,8 @@ class Intro extends World
     
     override public function update() 
     {
-        if (Input.check(Key.X)) {
+        if (Input.check(Key.X)) 
+        {
             HXP.screen.color = 0x222233;
             HXP.world=new GameWorld( "maps/map_level1.tmx", "maps/map_level2.tmx" );
         }

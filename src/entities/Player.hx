@@ -17,7 +17,7 @@ class Player extends PhysicsEntity
 	public var flip:Bool = false;
 	private var _equip:Bool = false;
 	public var _equiped:Bool = false;
-    public var sprite:Spritemap;
+    private var sprite:Spritemap;
     private var scaleFactor:Float = .5;
 	private var _actualFuel:Float = 16;
     private var _maxFuel:Int = 16;
@@ -40,7 +40,7 @@ class Player extends PhysicsEntity
         
         jetpackSfx = new Sfx( "music/jetpack.wav" );
 		
-		sprite = new Spritemap( "gfx/swordguy2.png", 48, 32 );
+		sprite = new Spritemap( "gfx/chef.png", 48, 50 );
         
 		sprite.add( "stand", [0, 1, 2, 3, 4, 5], 10, true );               
 		sprite.add( "run", [6, 7, 8, 9, 10, 11], 20, true );
@@ -87,7 +87,8 @@ class Player extends PhysicsEntity
 			flip = true;
             acceleration.x = -maxVelocity.x;
         }
-        else if ( Input.check("right") )
+ 
+        if ( Input.check("right") )
         {
 			flip = false;
             acceleration.x = maxVelocity.x;
@@ -95,7 +96,10 @@ class Player extends PhysicsEntity
 
 		if ( Input.check("up") && _actualFuel > 0 )
 		{   
-            jetpackSfx.play( );
+            //if ( !jetpackSfx.playing )
+            {
+                jetpackSfx.play( );
+            }
             
 			if (_actualFuel <= 70)
 			{
