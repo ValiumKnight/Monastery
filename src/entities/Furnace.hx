@@ -5,6 +5,7 @@ import com.haxepunk.graphics.Image;
 import com.haxepunk.Sfx;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
+import worlds.GameWorld;
 
 /**
  * ...
@@ -19,7 +20,7 @@ class Furnace extends Entity
 	{
 		super(x, y);
         
-        _sprite = new Image("gfx/furnace.png");
+        _sprite = new Image("gfx/furnace_off.png");
 		
 		graphic = _sprite;
         
@@ -51,5 +52,7 @@ class Furnace extends Entity
         i++;
         
         graphic = _sprite;
+		
+
     }
 }

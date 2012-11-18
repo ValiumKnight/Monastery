@@ -24,7 +24,8 @@ class GameWorld extends World
     public var gravity_points:Array<GravityPoint>;
     public var _world:String;
     public var _nextWorld:String;
-    
+    public var  door:Door;
+	
 	public function new(world:String, nextWorld:String) 
 	{
 		super ( );
@@ -41,20 +42,6 @@ class GameWorld extends World
         
         dynamic_entities = new Array<PhysicsEntity>( );
         gravity_points = new Array<GravityPoint>( );
-        
-        player = new Player( 100, 50 );
-		plant = new Plant (65, 50, "plant.png");
-		
-		add(player);
-        add(player.gun);
-        add(player.fuelBar);
-		add(plant);
-		
-        player.layer = 1;
-        player.gun.layer = 1;
-        
-        dynamic_entities.push( player );
-        dynamic_entities.push( plant );
 		
         createMap( );
 	}
@@ -62,7 +49,7 @@ class GameWorld extends World
     public function createMap( )
     {
         // create the map, set the assets in your nmml file to bytes
-        var e = new TmxEntity("maps/map_level1b.tmx");
+        var e = new TmxEntity(_world);
 
         // load layers named bottom, main, top with the appropriate tileset
         e.loadGraphic("gfx/tiles.png", ["main"]);
@@ -71,12 +58,31 @@ class GameWorld extends World
         e.loadMask( "main", CollisionType.STATIC_SOLID );
 
         var objectGroup:TmxObjectGroup = e.map.getObjectGroup( "objects" );
+		
       
         if ( objectGroup != null )
         {
             for ( object in objectGroup.objects )
             {
-				if ( object.type == "furnace" )
+				if ( object.type == "plant" )
+                {
+                    var plant:Plant = new Plant( object.x, object.y, "plant.png", true);
+                    
+                    dynamic_entities.push( plant );
+                    add( plant );
+                }
+                
+                if ( object.type == "player" )
+                {
+                    player = new Player( object.x, object.y );
+                    
+                    dynamic_entities.push( player );
+                    add(player);
+                    add(player.gun);
+                    add(player.fuelBar);
+                }
+				
+                if ( object.type == "furnace")
                 {
                     add( new Furnace( object.x, object.y ) );
                 }				
@@ -93,7 +99,7 @@ class GameWorld extends World
 				
 				if ( object.type == "door" )
                 {
-                    add( new Door( object.x, object.y ) );
+                    add( door = new Door( object.x, object.y ) );
                 }
             }
         }

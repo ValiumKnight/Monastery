@@ -13,6 +13,7 @@ import com.haxepunk.utils.Key;
 class Door extends Entity
 {
     private var _sprite: Image;
+	public static var locked: Bool = true;
 
 	public function new(x:Int, y:Int) 
 	{
@@ -23,5 +24,13 @@ class Door extends Entity
 		graphic = _sprite;
         
         setHitbox( _sprite.width, _sprite.height );
+	}
+	public function unlock()
+	{
+		_sprite = new Image("gfx/door_open.png");
+		
+		graphic = _sprite;
+		
+		locked = false;
 	}
 }

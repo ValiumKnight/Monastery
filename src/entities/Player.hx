@@ -40,8 +40,9 @@ class Player extends PhysicsEntity
         layer = 5;
         
         jetpackSfx = new Sfx( "music/jetpack.wav" );
-		
-		sprite = new Spritemap( "gfx/chef.png", 48, 50 );
+	
+		sprite = new Spritemap( "gfx/chef.png", 48, 48 );
+
         
 		sprite.add( "stand", [0, 1, 2, 3, 4, 5], 10, true );               
 		sprite.add( "run", [6, 7, 8, 9, 10, 11], 20, true );
@@ -77,7 +78,7 @@ class Player extends PhysicsEntity
         
         type = CollisionType.PLAYER;
         
-        setHitbox( Std.int( sprite.width * scaleFactor ), Std.int( sprite.height * scaleFactor ) );
+        setHitbox( Std.int( 48 * scaleFactor ), Std.int( 48 * scaleFactor ) );
 	}
 	
 	// set velocity based on keyboard input
