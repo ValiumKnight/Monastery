@@ -10,7 +10,7 @@ class Bullet extends Entity
 	public function new(x:Float, y:Float)    
 	{        
 		super(x, y);         
-		graphic = Image.createRect(6, 6);
+		graphic = Image.createCircle(6, 660066 );
         setHitbox(6, 6);
         type = "bullet";
 		exists = true;
@@ -19,7 +19,7 @@ class Bullet extends Entity
 	
 	public override function update()    
 	{   
-		moveBy(10, 0, "enemy");
+		moveBy(7, 0, "enemy");
 		super.update();
 			
 		if ( collide( CollisionType.STATIC_SOLID , x , y ) != null )
