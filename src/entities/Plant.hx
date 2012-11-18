@@ -13,7 +13,6 @@ class Plant extends PhysicsEntity
     private var _plant_sprite: Spritemap;
 	private var _pointX: Float;
 	private var _pointY: Float;
-	private var _shoot: Bool = false;
 	private var _walks: Bool = false;
 	private var _go_left: Bool;
 	private var _go_right: Bool;
@@ -100,7 +99,6 @@ class Plant extends PhysicsEntity
             
 			destroy();
 		}
-        
 		handleInput();
 		
 		if ( onWall() )
@@ -119,8 +117,6 @@ class Plant extends PhysicsEntity
 				_go_right = true;
 				x += 5;
 			}
-			
-			
 			
 		}
 		_plant_sprite.flipped = _go_left;

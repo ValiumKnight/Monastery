@@ -19,18 +19,19 @@ import entities.Spikes;
 class GameWorld extends World
 {
     public var player:Player;
+    private var plant:Plant;
     public var dynamic_entities:Array<PhysicsEntity>;
     public var gravity_points:Array<GravityPoint>;
-    private var _world:String;
-    public static var _lastLoadedWorld:String; 
-    
-	public function new(world:String) 
+    public var _world:String;
+    public var _nextWorld:String;
+    public var  door:Door;
+	public function new(world:String, nextWorld:String) 
 	{
 		super ( );
         
         _world = world;
         
-        _lastLoadedWorld = world;
+        _nextWorld = nextWorld;
         
         var background:Entity = new Entity( );
         
@@ -56,6 +57,7 @@ class GameWorld extends World
         e.loadMask( "main", CollisionType.STATIC_SOLID );
 
         var objectGroup:TmxObjectGroup = e.map.getObjectGroup( "objects" );
+		
       
         if ( objectGroup != null )
         {
@@ -79,10 +81,10 @@ class GameWorld extends World
                     add(player.fuelBar);
                 }
 				
-                if ( object.type == "furnace" )
+                if ( object.type == "furnace")
                 {
                     add( new Furnace( object.x, object.y ) );
-                }
+                }				
 				
 				if ( object.type == "spikes" )
                 {
@@ -96,7 +98,7 @@ class GameWorld extends World
 				
 				if ( object.type == "door" )
                 {
-                    add( new Door( object.x, object.y ) );
+                    add( door = new Door( object.x, object.y ) );
                 }
             }
         }

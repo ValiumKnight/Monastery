@@ -2,12 +2,14 @@ package entities;
 
 import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
+import com.haxepunk.Sfx;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
+import worlds.GameWorld;
 
 /**
  * ...
- * @author Rob Filippi
+ * @author Pumpkin Eaters
  */
 
 class Furnace extends Entity
@@ -18,7 +20,7 @@ class Furnace extends Entity
 	{
 		super(x, y);
         
-        _sprite = new Image( "gfx/furnace_off.png" );
+        _sprite = new Image("gfx/furnace_off.png");
 		
 		graphic = _sprite;
         
@@ -31,6 +33,12 @@ class Furnace extends Entity
     {
         _sprite = new Image( "gfx/furnace.png" );
         
+        new Sfx( "music/i-don-t-blame-you.mp3" ).play( );
+        
+        new Sfx( "music/burn_plant.wav" ).play( );
+        
         graphic = _sprite;
+		
+
     }
 }

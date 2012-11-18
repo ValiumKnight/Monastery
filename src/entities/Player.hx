@@ -17,7 +17,7 @@ class Player extends PhysicsEntity
 	public var flip:Bool = false;
 	private var _equip:Bool = false;
 	public var _equiped:Bool = false;
-    public var sprite:Spritemap;
+    private var sprite:Spritemap;
     private var scaleFactor:Float = .5;
 	private var _actualFuel:Float = 16;
     private var _maxFuel:Int = 16;
@@ -32,10 +32,7 @@ class Player extends PhysicsEntity
 		
 		gun = new GravityGun( 50, 35 );
         
-        fuelBar = new FuelBar( );
-        
-        fuelBar.x = HXP.screen.width - 50;
-        fuelBar.y = 80;
+        fuelBar = new FuelBar( HXP.screen.width - 50, 80 );
         
         fuelBar.layer = 1;
         
@@ -43,7 +40,7 @@ class Player extends PhysicsEntity
         
         jetpackSfx = new Sfx( "music/jetpack.wav" );
 		
-		sprite = new Spritemap( "gfx/swordguy2.png", 48, 32 );
+		sprite = new Spritemap( "gfx/chef.png", 48, 48 );
         
 		sprite.add( "stand", [0, 1, 2, 3, 4, 5], 10, true );               
 		sprite.add( "run", [6, 7, 8, 9, 10, 11], 20, true );
@@ -79,7 +76,7 @@ class Player extends PhysicsEntity
         
         type = CollisionType.PLAYER;
         
-        setHitbox( Std.int( sprite.width * scaleFactor ), Std.int( sprite.height * scaleFactor ) );
+        setHitbox( Std.int( 48 * scaleFactor ), Std.int( 48 * scaleFactor ) );
 	}
 	
 	// set velocity based on keyboard input
@@ -90,7 +87,8 @@ class Player extends PhysicsEntity
 			flip = true;
             acceleration.x = -maxVelocity.x;
         }
-        else if ( Input.check("right") )
+ 
+        if ( Input.check("right") )
         {
 			flip = false;
             acceleration.x = maxVelocity.x;
@@ -98,7 +96,10 @@ class Player extends PhysicsEntity
 
 		if ( Input.check("up") && _actualFuel > 0 )
 		{   
-            jetpackSfx.play( );
+            //if ( !jetpackSfx.playing )
+            {
+                jetpackSfx.play( );
+            }
             
 			if (_actualFuel <= 70)
 			{
@@ -158,7 +159,8 @@ class Player extends PhysicsEntity
 				_equiped = false;
 			}
 			else if ( plant != null )
-			{	      
+			{
+                new Sfx( "music/hello-friend.mp3" ).play( );
 				_equiped = true;
 			}
 		}

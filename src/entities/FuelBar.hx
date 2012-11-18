@@ -9,9 +9,9 @@ class FuelBar extends Entity
     private var health:Int = 16;
     private var dead:Bool = false;
     
-    public function new()
+    public function new( x, y )
     {
-        super( );
+        super( x,y );
         
         healthbar = new Spritemap("gfx/circlehealthbar.png", 32, 32);
         graphic = healthbar;
