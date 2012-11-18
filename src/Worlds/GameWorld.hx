@@ -23,7 +23,7 @@ class GameWorld extends World
     
 	public function new() 
 	{
-		super ();
+		super ( );
         
         dynamic_entities = new Array<PhysicsEntity>( );
         gravity_points = new Array<GravityPoint>( );
@@ -123,7 +123,6 @@ class GameWorld extends World
                 if( finalDistance <= gravity_point.radius * 3 )
                 {
                     entity.gravity.y = 0;
-                    //trace( "0!" );
                         
                     var strength:Float = Math.abs(planetDistance_x) + Math.abs(planetDistance_y);
                     var force_x:Float = planetDistance_x *( (1 / strength) * gravity_point.radius / finalDistance) * 1;
@@ -134,7 +133,6 @@ class GameWorld extends World
                 else
                 {
                     entity.gravity.y = 0.5;
-                    //trace( "0.5!" );
                 }
             }
         }

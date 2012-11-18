@@ -21,7 +21,6 @@ class FuelBar extends Entity
     
     private function adjustBar()
     {
-        
         healthbar.frame = health ;
     }
     

@@ -70,7 +70,7 @@ class Bullet extends PhysicsEntity
         
         if ( gp != null )
         {
-            gp.enabled = !gp.enabled;
+            gp.toggle( );
 			destroyBullet();
         }
         

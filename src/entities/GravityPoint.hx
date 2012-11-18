@@ -5,6 +5,7 @@ import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.graphics.Spritemap;
 import com.haxepunk.graphics.Emitter;
+import com.haxepunk.Sfx;
 import flash.display.BitmapData;
 import com.haxepunk.utils.Ease;
 import com.haxepunk.graphics.Graphiclist;
@@ -25,6 +26,8 @@ class GravityPoint extends Entity
     public var enabled:Bool;
     
     private var gravityEmitter:Emitter;
+    
+    private var gravityOnSfx:Sfx;
 
 	public function new(x:Int, y:Int) 
 	{
@@ -35,6 +38,8 @@ class GravityPoint extends Entity
         _sprite = new Spritemap("gfx/block.png");
         
         _sprite.scale = 0.5;
+        
+        gravityOnSfx = new Sfx( "music/gravity_on.wav" );
         
         circle = new Entity( x - radius*3 + _sprite.width / 4, y - radius*3 + _sprite.height / 4 );
         
@@ -72,11 +77,12 @@ class GravityPoint extends Entity
         if ( enabled )
         {
             gravityEmitter.emit("explode",x + width/2, y+ height/2);
-            //world.add( circle );
         }
-        else
-        {
-            //world.remove( circle );    
-        }
+    }
+    
+    public function toggle( )
+    {
+        enabled = !enabled;
+        gravityOnSfx.play( );
     }
 }
