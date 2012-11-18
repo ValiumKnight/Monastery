@@ -40,7 +40,7 @@ class Player extends PhysicsEntity
         Input.define("down", [Key.DOWN, Key.S]);
 		
 		gravity.y = 0.5;
-        maxVelocity.y = 3;
+        maxVelocity.y = 1.1;
         maxVelocity.x = 1.5;
         friction.x = 1;
         friction.y = 0;
@@ -81,18 +81,28 @@ class Player extends PhysicsEntity
 
 		if ( Input.check("up") && _fuel > 0 )
 		{   
+			if (_fuel <= 70)
+			{
+				maxVelocity.y = 2;
+			}
+			else if (_fuel <= 20)
+			{
+				maxVelocity.y = 3;
+			}
             acceleration.y = -gravity.y * maxVelocity.y;
-			_fuel-=10;
+			_fuel-=4;
 			explosionEmitter.emit("explode",x + width/2, y+ height/2);
 		}
 		
 		if ( _fuel < 100 && !Input.check("up"))
 		{
+			maxVelocity.y = 1.1;
 			_fuel++;
 		}
 		
 		if ( onGround( ) )
 		{
+			maxVelocity.y = 1.1;
 			_fuel = 100;
 		}
 		
