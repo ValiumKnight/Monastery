@@ -36,7 +36,7 @@ class GameWorld extends World
         
         var background:Entity = new Entity( );
         
-        background.graphic = new Image( "gfx/interior_spaceship.png" );
+        background.graphic = new Image( "gfx/space_window.png" );
         
         add( background );
         
