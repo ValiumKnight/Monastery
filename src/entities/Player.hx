@@ -15,7 +15,7 @@ class Player extends PhysicsEntity
 {
 	private var flip:Bool = false;
     private var sprite:Spritemap;
-    private var scaleFactor:Float = 0.5;
+    private var scaleFactor:Float = .5;
 	private var _fuel:Float = 100;
     public var gun:GravityGun;
     private var explosionEmitter:Emitter;
