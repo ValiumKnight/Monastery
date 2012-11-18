@@ -101,6 +101,10 @@ class GameWorld extends World
                 {
                     add( door = new Door( object.x, object.y ) );
                 }
+				if ( object.type == "button" )
+                {
+                    //add( door = new Button( object.x, object.y ) );
+                }
             }
         }
       

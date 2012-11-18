@@ -36,7 +36,7 @@ class Door extends Entity
 		{
 			var gameWorld:GameWorld = cast( world, GameWorld );
             gameWorld._world = gameWorld._nextWorld;
-			gameWorld._nextWorld = "maps/map_level1.tmx" ;
+			gameWorld._nextWorld = "maps/map_level2.tmx" ;
             HXP.world = new GameWorld( gameWorld._world, gameWorld._nextWorld );
 		}
 	}
