@@ -40,11 +40,11 @@ class Furnace extends Entity
         switch( i )
         {
             case 0:
-                new Sfx( "sfx/no-hard-feelings.mp3" ).play( );
+                new Sfx( "sfx/Zombie1.mp3" ).play( );
             case 1:
                 new Sfx( "sfx/i-don-t-hate-you.mp3" ).play( );
             case 2:
-                new Sfx( "sfx/wooo.mp3" ).play( );          
+                new Sfx( "sfx/Pop.mp3" ).play( );          
             case 3:
                 new Sfx( "sfx/i-don-t-blame-you.mp3" ).play( );    
         }
