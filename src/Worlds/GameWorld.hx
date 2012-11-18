@@ -32,12 +32,14 @@ class GameWorld extends World
 		
 		add(player);
         add(player.gun);
+        add(player.fuelBar);
 		add(plant);
 		
         player.layer = 1;
         player.gun.layer = 1;
         
         dynamic_entities.push( player );
+        //dynamic_entities.push( plant );
 		
         createMap( );
 	}
@@ -113,8 +115,8 @@ class GameWorld extends World
                     trace( "0!" );
                         
                     var strength:Float = Math.abs(planetDistance_x) + Math.abs(planetDistance_y);
-                    var force_x:Float = planetDistance_x *( (1 / strength) * gravity_point.radius / finalDistance) * 5;
-                    var force_y:Float = planetDistance_y *( (1 / strength) * gravity_point.radius / finalDistance) * 5;
+                    var force_x:Float = planetDistance_x *( (1 / strength) * gravity_point.radius / finalDistance) * 1;
+                    var force_y:Float = planetDistance_y *( (1 / strength) * gravity_point.radius / finalDistance) * 1;
                     entity.acceleration.x -= force_x;
                     entity.acceleration.y -= force_y;
                 }

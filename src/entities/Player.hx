@@ -16,15 +16,24 @@ class Player extends PhysicsEntity
 	private var flip:Bool = false;
     private var sprite:Spritemap;
     private var scaleFactor:Float = .5;
-	private var _fuel:Float = 100;
+	private var _actualFuel:Float = 16;
+    private var _maxFuel:Int = 16;
     public var gun:GravityGun;
     private var explosionEmitter:Emitter;
+    public var fuelBar:FuelBar;
     
 	public function new(x:Float, y:Float) 
 	{
 		super(x, y);
 		
 		gun = new GravityGun( 50, 35 );
+        
+        fuelBar = new FuelBar( );
+        
+        fuelBar.x = HXP.screen.width - 50;
+        fuelBar.y = 80;
+        
+        fuelBar.layer = 1;
 		
 		sprite = new Spritemap( "gfx/swordguy2.png", 48, 32 );
         
@@ -50,7 +59,7 @@ class Player extends PhysicsEntity
         // Define our particles
         explosionEmitter.newType("explode",[0]);
         explosionEmitter.setAlpha("explode",1,0);
-        explosionEmitter.setMotion("explode", 0, 50, 4, 180, -40, -0.5, Ease.quadOut );
+        explosionEmitter.setMotion("explode", 0, 50, 1, 180, -40, -0.5, Ease.quadOut );
         explosionEmitter.setColor("explode", 0xff0000, 0xffff00 );
         explosionEmitter.relative = false;
         
@@ -79,40 +88,41 @@ class Player extends PhysicsEntity
             acceleration.x = maxVelocity.x;
         }        
 
-		if ( Input.check("up") && _fuel > 0 )
+		if ( Input.check("up") && _actualFuel > 0 )
 		{   
-			if (_fuel <= 70)
-			{
-				maxVelocity.y = 2;
-			}
-			else if (_fuel <= 20)
+			if (_actualFuel <= 70)
 			{
 				maxVelocity.y = 3;
 			}
+			else if (_actualFuel <= 20)
+			{
+				maxVelocity.y = 4;
+			}
             acceleration.y = -gravity.y * maxVelocity.y;
-			_fuel-=4;
+			_actualFuel-=1;
 			explosionEmitter.emit("explode",x + width/2, y+ height/2);
 		}
 		
-		if ( _fuel < 100 && !Input.check("up"))
+		if ( _actualFuel < _maxFuel && !Input.check("up"))
 		{
 			maxVelocity.y = 1.1;
-			_fuel++;
+			_actualFuel += 0.3;
 		}
 		
 		if ( onGround( ) )
 		{
 			maxVelocity.y = 1.1;
-			_fuel = 100;
+			_actualFuel = _maxFuel;
 		}
+        
+        fuelBar.setHealth( Std.int( _actualFuel ) );
 		
-		//trace ("FUEL =" + _fuel + "%");
+		trace ("FUEL =" + _actualFuel + "%");
     }
 	
 	//Set the animation based on 
 	private function setAnimations()
     {
-        // Value > 3, keeps sprite standing still
         if ( Math.abs( velocity.x ) < 0.3 && onGround( ) )
         {
             sprite.play("stand");
