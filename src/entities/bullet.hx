@@ -7,6 +7,7 @@ import com.haxepunk.graphics.Spritemap;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 import worlds.GameWorld;
+import com.haxepunk.HXP;
 
 class Bullet extends PhysicsEntity
 {    
@@ -43,7 +44,11 @@ class Bullet extends PhysicsEntity
 	
 	private function handleInput()
     {
-		if ( Input.check("destroy") ) 
+        trace( exists );
+        
+		if ( Input.check("destroy")
+             || x > HXP.screen.width || x < 0 
+             || y > HXP.screen.height || y < 0 ) 
 		{
 			_destroy = true;
 		}
@@ -84,13 +89,14 @@ class Bullet extends PhysicsEntity
 			destroyBullet();
         }
         
+        handleInput();
 		setAnimations();
-		handleInput();
 	}
     
 	private function setSpeed()
 	{
-		while (_deltaX > 45 || _deltaY > 45 ) {
+		while (_deltaX > 45 || _deltaY > 45 ) 
+        {
 			_deltaX = _deltaX / 2;
 			_deltaY = _deltaY / 2;
 		}
