@@ -1,13 +1,13 @@
 package entities;
 import com.haxepunk.graphics.Image;
-import com.haxepunk.Entity;
+import com.matttuttle.PhysicsEntity;
 
 /**
  * ...
  * @author Pumpkin Eater
  */
 
-class Plant extends Entity
+class Plant extends PhysicsEntity
 {
     private var _plant_sprite: Image;
 	private var _pointX: Float;
@@ -23,6 +23,14 @@ class Plant extends Entity
 		_plant_sprite.scale = scaleFactor;
         
 		graphic = _plant_sprite;
+		
+		gravity.y = 0.5;
+        maxVelocity.y = 1.1;
+        maxVelocity.x = 1.5;
+        friction.x = 1;
+        friction.y = 0;
+		
+		setHitbox( Std.int( _plant_sprite.width * scaleFactor ), Std.int( _plant_sprite.height * scaleFactor ) );
 	}
 	
 	// set velocity based on keyboard input
