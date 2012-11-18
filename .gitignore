@@ -5,6 +5,7 @@
 *.pydevproject
 .project
 .metadata
+.build
 
 *.cpp
 *.obj
