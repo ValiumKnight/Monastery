@@ -6,6 +6,7 @@ import com.matttuttle.PhysicsEntity;
 import com.haxepunk.graphics.Spritemap;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
+import worlds.GameWorld;
 
 class Bullet extends PhysicsEntity
 {    
@@ -72,7 +73,7 @@ class Bullet extends PhysicsEntity
         
         var gp:GravityPoint = cast( collide( CollisionType.GRAVITY_POINT, x, y ), GravityPoint );
         
-        if ( gp != null )
+        if ( gp != null && gp != GameWorld.button_gp )
         {
 			if (GP != null && GP.enabled && GP != gp)
 			{

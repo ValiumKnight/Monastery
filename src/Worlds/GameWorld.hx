@@ -26,6 +26,7 @@ class GameWorld extends World
     public var _world:String;
     public var _nextWorld:String;
     public static var door:Door;
+	public static var button_gp:GravityPoint;
 	
 	public function new(world:String, nextWorld:String) 
 	{
@@ -96,7 +97,11 @@ class GameWorld extends World
                 if ( object.type == "gravitypoint" )
                 {
                     gravity_points.push( new GravityPoint( object.x, object.y ) );
-                }                
+                }
+                if ( object.type == "gravitypoint_b" )
+                {
+                    gravity_points.push( button_gp = new GravityPoint( object.x, object.y ) );
+                } 
 				
 				if ( object.type == "door" )
                 {
