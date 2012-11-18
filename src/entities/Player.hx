@@ -62,20 +62,21 @@ class Player extends PhysicsEntity
             acceleration.x = maxVelocity.x;
         }        
 
-		if ( Input.check("up") && _fuel > 0/*&& onGround( )*/ )
+		if ( Input.check("up") && _fuel > 0 )
 		{   
             acceleration.y = -gravity.y * maxVelocity.y;
-			_fuel-=3;
+			_fuel-=2;
 			
-		}
-		else if ( Input.check("up") )
-		{
-			acceleration.y = gravity.y * maxVelocity.y;
 		}
 		
 		if ( _fuel < 100 && !Input.check("up"))
 		{
 			_fuel++;
+		}
+		
+		if ( onGround( ) )
+		{
+			_fuel = 100;
 		}
 		
 		trace ("FUEL =" + _fuel + "%");

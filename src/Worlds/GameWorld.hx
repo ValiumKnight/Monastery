@@ -85,12 +85,12 @@ class GameWorld extends World
                 {
                     if (entity.collide( CollisionType.GRAVITY_POINT, entity.x, entity.y ) != null )
                     {
-                        trace( "done" );
+                        //trace( "done" );
                         continue;
                     }
                     else
                     {
-                        trace( "Attracting" );
+                        //trace( "Attracting" );
                     }
                 }
                 
