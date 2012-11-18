@@ -5,7 +5,7 @@
  </tileset>
  <layer name="main" width="60" height="47">
   <data encoding="base64" compression="zlib">
-   eJztmckOgzAMBU176KIu/P/XFg499RkHN6UkmpHeBRIro4AVKaOZjYQQ0lBOU56d5i58zxYzVBqzNQ/DF99P8M2N2Rp8te9QEDVnb7C/+CrwzY3ZGs/X60FvvHdRD/s37C++CnzXjSn9v2v3gbW+pWcrW3ge1fplz+N7xleBbxvgW36e3PvZUZHd31bBF9+e6NVX3YEdLe7PLfbgmdlB3QX2ur+eA759+Hrgi+8Slym3IIfk2qK6mVxN9+1S1Nxv6mVq10jtNWXAlxDi5QUFXTaZ
+   eJztmckOgzAMBU176KIu/P/XFg499RkHN6UkmpHeBRIro4AVKaOZjYQQ0lBOU56d5i58zxYzVBqzNQ/DF99P8M2N2Rp8te9QEDVnb7C/+CrwzY3ZGs/X60FvvHdRD/s37C++CnzXjSn9v2v3grW+pWcrW3ge1fplz+N7xleBbxvgW36e3PvZUZHd31bBF9+e6NVX3YEdLe7PLfbgmdlB3QX2ur+eA759+Hrgi+8Slym3IIfk2qK6mVxN9+1S1Nxv6mVq10jtNWXAlxDi5QUdITaa
   </data>
  </layer>
  <objectgroup name="objects" width="60" height="47">
