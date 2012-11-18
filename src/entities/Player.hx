@@ -33,7 +33,7 @@ class Player extends PhysicsEntity
 		
 		gun = new GravityGun( 50, 35 );
         
-        fuelBar = new FuelBar( HXP.screen.width - 50, 80 );
+        fuelBar = new FuelBar( HXP.screen.width - 50, 20 );
         
         fuelBar.layer = 1;
         
