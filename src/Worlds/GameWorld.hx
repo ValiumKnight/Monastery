@@ -6,6 +6,7 @@ import com.haxepunk.tmx.TmxObjectGroup;
 import com.haxepunk.World;
 import com.haxepunk.graphics.Image;
 import entities.Block;
+import entities.GravityGun;
 import entities.Player;
 import entities.CollisionType;
 
@@ -21,6 +22,8 @@ class GameWorld extends World
 		
 		add( new Player( 50, 50 ) );
         
+		add( new GravityGun( 50, 35 ) );
+		
         createMap( );
 	}
 	
