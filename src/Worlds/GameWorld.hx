@@ -24,7 +24,7 @@ class GameWorld extends World
     public var gravity_points:Array<GravityPoint>;
     public var _world:String;
     public var _nextWorld:String;
-    public var  door:Door;
+    public static var door:Door;
 	
 	public function new(world:String, nextWorld:String) 
 	{

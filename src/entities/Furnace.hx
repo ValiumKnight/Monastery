@@ -35,24 +35,23 @@ class Furnace extends Entity
         
         new Sfx( "music/burn_plant.wav" ).play( );
         
-        var i:Int = 0;
+        var i:Int = Std.int( Math.random( )*3 ) - 1;
         
         switch( i )
         {
             case 0:
-                new Sfx( "music/burn_plant.wav" ).play( );
+                new Sfx( "music/no-hard-feelings.mp3" ).play( );
             case 1:
                 new Sfx( "music/i-don-t-hate-you.mp3" ).play( );
             case 2:
-                new Sfx( "music/wooo.mp3" ).play( );
-            case 3:
-                new Sfx( "music/no-hard-feelings.mp3" ).play( );
+                new Sfx( "music/wooo.mp3" ).play( );                
         }
         
         i++;
         
         graphic = _sprite;
 		
-
+		GameWorld.door.unlock();
+		
     }
 }
