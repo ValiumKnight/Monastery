@@ -14,7 +14,7 @@ import com.matttuttle.PhysicsEntity;
 
 class GameWorld extends World
 {
-    private var Player:Player;
+    private var player:Player;
     
     public var dynamic_entities:Array<PhysicsEntity>;
     public var gravity_points:Array<GravityPoint>;    
@@ -26,9 +26,11 @@ class GameWorld extends World
         dynamic_entities = new Array<PhysicsEntity>( );
         gravity_points = new Array<GravityPoint>( );
         
-        Player = new Player( 50, 50 );
-		add(Player);
-        add(Player.Gun);
+        player = new Player( 50, 50 );
+		add(player);
+        add(player.gun);
+        
+        dynamic_entities.push( player );
 		
         createMap( );
 	}
@@ -65,9 +67,10 @@ class GameWorld extends World
         for ( gravity_point in gravity_points )
         {
             add( gravity_point );      
+            add( gravity_point.circle );
         }
 
-      add(e);
+        add(e);
     }
     
     public override function update( )
@@ -78,14 +81,27 @@ class GameWorld extends World
         {            
             for ( gravity_point in gravity_points )
             {
+                if ( entity.type == CollisionType.PLAYER )
+                {
+                    if (entity.collide( CollisionType.GRAVITY_POINT, entity.x, entity.y ) != null )
+                    {
+                        trace( "done" );
+                        continue;
+                    }
+                    else
+                    {
+                        trace( "Attracting" );
+                    }
+                }
+                
                 var planetDistance_x:Float = entity.x - gravity_point.x;
                 var planetDistance_y:Float = entity.y - gravity_point.y;
                 
                 var finalDistance:Float = Math.sqrt( Math.pow( planetDistance_x, 2 ) + Math.pow( planetDistance_y, 2 ) );
                 
-                if( finalDistance <= gravity_point.radius * 3)
+                if( finalDistance <= gravity_point.radius * 3 && finalDistance > 20 )
                 {
-                    var strength:Float=Math.abs(planetDistance_x)+Math.abs(planetDistance_y);
+                    var strength:Float = Math.abs(planetDistance_x) + Math.abs(planetDistance_y);
                     var force_x:Float = planetDistance_x *( (1 / strength) * gravity_point.radius / finalDistance);
                     var force_y:Float = planetDistance_y *( (1 / strength) * gravity_point.radius / finalDistance);
                     entity.acceleration.x -= force_x;

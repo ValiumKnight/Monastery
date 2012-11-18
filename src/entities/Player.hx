@@ -12,14 +12,18 @@ class Player extends PhysicsEntity
 	private var flip:Bool = false;
     private var sprite:Spritemap;
     private var scaleFactor:Float = 0.5;
+<<<<<<< HEAD
 	private var _fuel:Float = 100;
     public var Gun:GravityGun;
+=======
+    public var gun:GravityGun;
+>>>>>>> 376e489f3ba59a5e2df9225bcbfc1b358f39ab58
 
 	public function new(x:Float, y:Float) 
 	{
 		super(x, y);
 		
-		enableGun();
+		gun = new GravityGun( 50, 35 );
 		
 		sprite = new Spritemap( "gfx/swordguy2.png", 48, 32 );
         
@@ -36,8 +40,13 @@ class Player extends PhysicsEntity
 		Input.define("up", [Key.UP, Key.W, Key.SPACE]);
         Input.define("down", [Key.DOWN, Key.S]);
 		
+<<<<<<< HEAD
 		gravity.y = 0.5;
         maxVelocity.y = 1.5;
+=======
+		gravity.y = 0.1;
+        maxVelocity.y = 12;
+>>>>>>> 376e489f3ba59a5e2df9225bcbfc1b358f39ab58
         maxVelocity.x = 1.5;
         friction.x = 1;
         friction.y = 0;
@@ -46,10 +55,6 @@ class Player extends PhysicsEntity
 
         
         setHitbox( Std.int( sprite.width * scaleFactor ), Std.int( sprite.height * scaleFactor ) );
-	}
-	public function enableGun()
-	{
-		Gun = new GravityGun( 50, 35 );
 	}
 	
 	// set velocity based on keyboard input
@@ -66,12 +71,11 @@ class Player extends PhysicsEntity
 			flip = false;
             acceleration.x = maxVelocity.x;
         }        
-		
+
 		if ( Input.check("up") && _fuel > 0/*&& onGround( )*/ )
 		{   
             acceleration.y = -gravity.y * maxVelocity.y;
 			_fuel-=3;
-			
 			
 		}
 		else if ( Input.check("up") )
@@ -102,7 +106,7 @@ class Player extends PhysicsEntity
         }
         
         sprite.flipped = flip;
-		Gun.setCords(x, y);		
+		gun.setCords(x, y);		
     }
 	
 	public override function update()
