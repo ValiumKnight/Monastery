@@ -29,8 +29,6 @@ class GravityGun extends Entity
 		_sprite = new PreRotation("gfx/space_gun.png");
 		_sprite.scale = scaleFactor;
 		graphic = _sprite;
-
-
 	}
 	
 	// set velocity based on keyboard input
@@ -61,6 +59,12 @@ class GravityGun extends Entity
 		}
     }
 	
+	public function setCords(newX, newY)
+    {   
+		x = newX + 10.0;
+		y = newY;
+    }	
+	
 	public override function update()
     {   
         super.update();
@@ -69,5 +73,7 @@ class GravityGun extends Entity
         
         setAnimations( );
 		
-    }
+    }	
+	
+
 }

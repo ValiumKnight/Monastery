@@ -4,29 +4,25 @@ import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
 //import com.haxepunk.graphics.PreRotation;
 import com.matttuttle.PhysicsEntity;
+import com.haxepunk.graphics.Spritemap;
 
 class Bullet extends PhysicsEntity
 {    
 	public static var exists:Bool = false;
-	private var _sprite:Image;
+	private var orb:Spritemap;
 	private var _deltaX:Float;
 	private var _deltaY:Float;
 	private var _angle:Float;
 	
 	public function new(x:Float, y:Float, dX:Float, dY:Float, angle:Float)    
 	{        
-		super(x, y);
+		super(x, y - 5); 
 		_deltaX = dX;
 		_deltaY = dY;
 		_angle = angle;
-		_sprite = Image.createCircle(6, 660066 );
-		graphic = _sprite;
+		orb = new Spritemap("gfx/small_orb.png");
+		graphic = orb;
         setHitbox(6, 6);
-        type = "bullet";
-		exists = true;
-
-		//setSpeed();
-		
 	}
     
 	
