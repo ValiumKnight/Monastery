@@ -30,6 +30,8 @@ class Plant extends PhysicsEntity
         friction.x = 1;
         friction.y = 0;
 		
+		type = CollisionType.PLANT;
+		
 		setHitbox( Std.int( _plant_sprite.width * scaleFactor ), Std.int( _plant_sprite.height * scaleFactor ) );
 	}
 	
