@@ -49,7 +49,6 @@ class GameWorld extends World
 		
         createMap( );
 
-		trace(Intro.cur_lvl);
 		Input.define("nxt_lvl", [Key.F1]);
 
 	}

@@ -43,9 +43,7 @@ class Bullet extends PhysicsEntity
 	}
 	
 	private function handleInput()
-    {
-        trace( exists );
-        
+    {        
 		if ( Input.check("destroy")
              || x > HXP.screen.width || x < 0 
              || y > HXP.screen.height || y < 0 ) 
