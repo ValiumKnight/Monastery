@@ -12,8 +12,8 @@ class Player extends PhysicsEntity
 	private var flip:Bool = false;
     private var sprite:Spritemap;
     private var scaleFactor:Float = 0.5;
+	private var _fuel:Float = 100;
     public var gun:GravityGun;
-
 	public function new(x:Float, y:Float) 
 	{
 		super(x, y);
@@ -36,7 +36,7 @@ class Player extends PhysicsEntity
         Input.define("down", [Key.DOWN, Key.S]);
 		
 		gravity.y = 0.1;
-        maxVelocity.y = 12;
+        maxVelocity.y = 1.5;
         maxVelocity.x = 1.5;
         friction.x = 1;
         friction.y = 0;
@@ -60,11 +60,24 @@ class Player extends PhysicsEntity
 			flip = false;
             acceleration.x = maxVelocity.x;
         }        
-		
-		if ( Input.check("up") && onGround( ) )
-		{
+
+		if ( Input.check("up") && _fuel > 0/*&& onGround( )*/ )
+		{   
             acceleration.y = -gravity.y * maxVelocity.y;
+			_fuel-=3;
+			
 		}
+		else if ( Input.check("up") )
+		{
+			acceleration.y = gravity.y * maxVelocity.y;
+		}
+		
+		if ( _fuel < 100 && !Input.check("up"))
+		{
+			_fuel++;
+		}
+		
+		trace ("FUEL =" + _fuel + "%");
     }
 	
 	//Set the animation based on 
