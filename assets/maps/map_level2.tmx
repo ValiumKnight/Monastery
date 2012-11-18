@@ -11,7 +11,7 @@
  <objectgroup name="objects" width="60" height="47">
   <object type="gravitypoint" x="176" y="243"/>
   <object type="gravitypoint" x="327" y="242"/>
-  <object type="gravitypoint" x="224" y="132"/>
+  <object type="gravitypoint" x="248" y="136"/>
   <object type="plant" x="72" y="256"/>
   <object type="furnace" x="340" y="86"/>
   <object type="player" x="253" y="286"/>

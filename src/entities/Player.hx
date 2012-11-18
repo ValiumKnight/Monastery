@@ -111,7 +111,7 @@ class Player extends PhysicsEntity
 			{
 				maxVelocity.y = 4;
 			}
-            acceleration.y = -gravity.y * maxVelocity.y;
+            acceleration.y = -gravity.y * maxVelocity.y * 0.8;
 			_actualFuel-=1;
 			explosionEmitter.emit("explode",x + width/2, y+ height/2);
 		}

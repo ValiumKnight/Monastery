@@ -73,7 +73,7 @@ class GameWorld extends World
             {
 				if ( object.type == "plant" )
                 {
-                    var plant:Plant = new Plant( object.x, object.y, "plant.png", true);
+                    var plant:Plant = new Plant( object.x, object.y, "plant_new.png", true);
                     
                     dynamic_entities.push( plant );
                     add( plant );
