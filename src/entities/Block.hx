@@ -18,7 +18,7 @@ class Block extends Entity
 	{
 		super(x, y);
         
-        _sprite = new Image("gfx/block.png");
+        _sprite = new Image("gfx/furnace.png");
 		
 		graphic = _sprite;
         

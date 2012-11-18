@@ -4,6 +4,8 @@ import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
 import com.matttuttle.PhysicsEntity;
 import com.haxepunk.graphics.Spritemap;
+import com.haxepunk.utils.Input;
+import com.haxepunk.utils.Key;
 
 class Bullet extends PhysicsEntity
 {    
@@ -12,6 +14,7 @@ class Bullet extends PhysicsEntity
 	private var _deltaX:Float;
 	private var _deltaY:Float;
 	private var _angle:Float;
+	private var _destroy: Bool = false;
 	
 	public function new(x:Float, y:Float, dX:Float, dY:Float, angle:Float)    
 	{        
@@ -31,11 +34,26 @@ class Bullet extends PhysicsEntity
 		exists = true;
         
         type = CollisionType.BULLET;
+		
+		Input.define("destroy", [Key.Q]);
 	}
-    
+	
+	private function handleInput()
+    {
+		if ( Input.check("destroy") ) 
+		{
+			_destroy = true;
+		}
+	}
+	
 	private function setAnimations()
     {
 		orb.play("shoot");
+		
+		if (_destroy)
+		{
+			destroyBullet();
+		}
     }
 	
 	public override function update()    
@@ -45,8 +63,7 @@ class Bullet extends PhysicsEntity
 			
 		if ( collide( CollisionType.STATIC_SOLID , x , y ) != null )
 		{	      
-			world.remove(this); 
-			exists = false;
+			destroyBullet();
 		}
         
         var gp:GravityPoint = cast( collide( CollisionType.GRAVITY_POINT, x, y ), GravityPoint );
@@ -54,11 +71,11 @@ class Bullet extends PhysicsEntity
         if ( gp != null )
         {
             gp.toggle( );
-            world.remove(this);
-            exists = false;
+			destroyBullet();
         }
         
 		setAnimations();
+		handleInput();
 	}
 	private function setSpeed()
 	{
@@ -67,5 +84,13 @@ class Bullet extends PhysicsEntity
 			_deltaX = _deltaX / 2;
 			_deltaY = _deltaY / 2;
 		}
+	}
+	public function destroyBullet() {
+			
+			if (exists)
+			{
+				world.remove(this);
+				exists = false;
+			}
 	}
 }

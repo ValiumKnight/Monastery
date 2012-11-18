@@ -15,6 +15,7 @@ import com.haxepunk.Sfx;
 class GravityGun extends Entity
 {
     private var _sprite: PreRotation;
+	private var _bullet: Bullet;
 	private var _pointX: Float;
 	private var _pointY: Float;
 	private var _shoot: Bool = false;
@@ -37,6 +38,7 @@ class GravityGun extends Entity
 		_sprite.scale = scaleFactor;
         
 		graphic = _sprite;
+
 	}
 	
 	// set velocity based on keyboard input
@@ -50,7 +52,7 @@ class GravityGun extends Entity
 		if (Input.mousePressed && !Bullet.exists)
 		{    
 			_shoot = true;
-		}	
+		}
     }
 	
 	//Set the animation based on 
@@ -61,10 +63,9 @@ class GravityGun extends Entity
 		
 		if (_shoot)
 		{
-			world.add(new Bullet(x + width, y + height / 4, _pointX, _pointY, frameAngle));
-            
             gravityOnSfxs[Std.int( Math.random( )* gravityOnSfxs.length )].play( );
-            
+			_bullet = new Bullet(x + width, y + height / 4, _pointX, _pointY, frameAngle);
+			world.add(_bullet);
 			_shoot = false;
 		}
     }

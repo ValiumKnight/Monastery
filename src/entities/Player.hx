@@ -15,6 +15,8 @@ import nme.display.BitmapData;
 class Player extends PhysicsEntity
 {
 	private var flip:Bool = false;
+	private var _equip:Bool = false;
+	private var _equiped:Bool = false;
     private var sprite:Spritemap;
     private var scaleFactor:Float = .5;
 	private var _actualFuel:Float = 16;
@@ -51,6 +53,7 @@ class Player extends PhysicsEntity
         Input.define("right", [Key.RIGHT, Key.D]);
 		Input.define("up", [Key.UP, Key.W, Key.SPACE]);
         Input.define("down", [Key.DOWN, Key.S]);
+		Input.define("equip", [Key.E]);
 		
 		gravity.y = 0.5;
         maxVelocity.y = 1.1;
@@ -112,6 +115,15 @@ class Player extends PhysicsEntity
 			explosionEmitter.emit("explode",x + width/2, y+ height/2);
 		}
 		
+		if ( Input.pressed("equip") )
+		{
+			_equip = !_equip;
+		}
+		else
+		{
+			_equip = false;
+		}
+		
 		if ( _actualFuel < _maxFuel && !Input.check("up"))
 		{
 			maxVelocity.y = 1.1;
@@ -125,12 +137,12 @@ class Player extends PhysicsEntity
 		}
         
         fuelBar.setHealth( Std.int( _actualFuel ) );
-		
     }
 	
 	//Set the animation based on 
 	private function setAnimations()
     {
+		var plant:Plant = cast(collide( CollisionType.PLANT , x , y ), Plant);
         if ( Math.abs( velocity.x ) < 0.3 && onGround( ) )
         {
             sprite.play("stand");
@@ -139,6 +151,25 @@ class Player extends PhysicsEntity
         {
             sprite.play("run");
         }
+		
+		if (_equip)
+		{
+			
+			if (_equiped)
+			{
+				_equiped = false;
+			}
+			else if ( plant != null )
+			{	      
+
+				_equiped = true;
+			}
+		}
+		
+		if (_equiped) {
+			trace("Plant equiped");
+			plant.setCords(x, y);
+		}
         
         sprite.flipped = flip;
 		gun.setCords(x, y);		

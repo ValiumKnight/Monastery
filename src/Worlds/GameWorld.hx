@@ -12,6 +12,7 @@ import entities.Plant;
 import entities.Player;
 import entities.CollisionType;
 import com.matttuttle.PhysicsEntity;
+import entities.Spikes;
 
 class GameWorld extends World
 {
@@ -27,8 +28,8 @@ class GameWorld extends World
         dynamic_entities = new Array<PhysicsEntity>( );
         gravity_points = new Array<GravityPoint>( );
         
-        player = new Player( 50, 50 );
-		plant = new Plant (50, 75, "space_gun.png");
+        player = new Player( 100, 50 );
+		plant = new Plant (65, 80, "space_gun.png");
 		
 		add(player);
         add(player.gun);
@@ -64,6 +65,16 @@ class GameWorld extends World
                 if ( object.type == "crate" )
                 {
                     add( new Block( object.x, object.y ) );
+                }                
+				
+				if ( object.type == "furnace" )
+                {
+                    add( new Block( object.x, object.y ) );
+                }				
+				
+				if ( object.type == "spikes" )
+                {
+                    add( new Spikes( object.x, object.y ) );
                 }
                 
                 if ( object.type == "gravitypoint" )
