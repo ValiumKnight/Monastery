@@ -153,7 +153,6 @@ class GameWorld extends World
                 
                 if( finalDistance <= gravity_point.radius )
                 {
-                    trace( "zero" );
                     entity.gravity.y = 0;
                         
                     var strength:Float = Math.abs(planetDistance_x) + Math.abs(planetDistance_y);
@@ -164,7 +163,6 @@ class GameWorld extends World
                 }
                 else
                 {
-                    trace( "zero.5" );
                     entity.gravity.y = 0.5;
                 }
             }
