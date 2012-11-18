@@ -106,7 +106,7 @@ class Player extends PhysicsEntity
 			_fuel = 100;
 		}
 		
-		//trace ("FUEL =" + _fuel + "%");
+		trace ("FUEL =" + _fuel + "%");
     }
 	
 	//Set the animation based on 
