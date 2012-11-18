@@ -29,7 +29,7 @@ class Player extends PhysicsEntity
 		// defines left, right, up, down as arrow keys and WASD controls
         Input.define("left", [Key.LEFT, Key.A]);
         Input.define("right", [Key.RIGHT, Key.D]);
-		Input.define("up", [Key.UP, Key.W]);
+		Input.define("up", [Key.UP, Key.W, Key.SPACE]);
         Input.define("down", [Key.DOWN, Key.S]);
 		
 
