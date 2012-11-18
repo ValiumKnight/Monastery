@@ -31,9 +31,9 @@ class Player extends PhysicsEntity
         Input.define("right", [Key.RIGHT, Key.D]);
 		Input.define("up", [Key.UP, Key.W]);
         Input.define("down", [Key.DOWN, Key.S]);
-		Input.define("change_color", [Key.SPACE]);
+		Input.define("shoot", [Key.SPACE]);
 		
-		
+
 		
 		gravity.y = 0.5;
         maxVelocity.y = 12;
@@ -42,6 +42,7 @@ class Player extends PhysicsEntity
         friction.y = 0;
         
         type = CollisionType.PLAYER;
+
         
         setHitbox( Std.int( sprite.width * scaleFactor ), Std.int( sprite.height * scaleFactor ) );
 	}
@@ -65,8 +66,10 @@ class Player extends PhysicsEntity
 		{            
             acceleration.y = -gravity.y * maxVelocity.y;
 		}
-		
-		trace(Input.mouseX + "," + Input.mouseY);
+		if (Input.check("shoot"))
+		{    
+			world.add(new Bullet(x + width, y + height / 4));
+		}
     }
 	
 	//Set the animation based on 
@@ -92,6 +95,5 @@ class Player extends PhysicsEntity
 		handleInput();
         
         setAnimations( );
-		
     }
 }
