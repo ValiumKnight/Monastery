@@ -45,7 +45,7 @@ class Player extends PhysicsEntity
         friction.x = 1;
         friction.y = 0;
         
-        explosionEmitter = new Emitter(new BitmapData(2, 2), 3, 3);
+        explosionEmitter = new Emitter(new BitmapData(5, 5), 3, 3);
         
         // Define our particles
         explosionEmitter.newType("explode",[0]);
