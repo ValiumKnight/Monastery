@@ -34,7 +34,7 @@ class GameWorld extends World
         gravity_points = new Array<GravityPoint>( );
         
         player = new Player( 100, 50 );
-		plant = new Plant (65, 80, "space_gun.png");
+		plant = new Plant (65, 80, "evil_plant.png");
 		
 		add(player);
         add(player.gun);
