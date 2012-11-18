@@ -69,7 +69,6 @@ class Plant extends PhysicsEntity
 				acceleration.x = -maxVelocity.x;
 			}
 		}
-		
         _plant_sprite.play( "stand" );
     }
 	
@@ -82,7 +81,7 @@ class Plant extends PhysicsEntity
 	public override function update()
     {   
         super.update();
-		
+
         setAnimations( );
         var furnace:Furnace = cast( collide( CollisionType.FURNACE , x , y ), Furnace );
         
@@ -99,6 +98,7 @@ class Plant extends PhysicsEntity
             
 			destroy();
 		}
+
 		handleInput();
 		
 		if ( onWall() )

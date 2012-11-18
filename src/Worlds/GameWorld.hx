@@ -25,6 +25,7 @@ class GameWorld extends World
     public var _world:String;
     public var _nextWorld:String;
     public var  door:Door;
+	
 	public function new(world:String, nextWorld:String) 
 	{
 		super ( );
