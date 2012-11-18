@@ -27,7 +27,7 @@ class Bullet extends PhysicsEntity
 		orb = sprite;
 		orb.add( "shoot", [0, 1, 2, 3], 10, true );
 		graphic = orb;
-        setHitbox(6, 6);
+        setHitbox(8, 8);
 		exists = true;
         
         type = CollisionType.BULLET;

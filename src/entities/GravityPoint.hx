@@ -4,6 +4,10 @@ import com.haxepunk.HXP;
 import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.graphics.Spritemap;
+import com.haxepunk.graphics.Emitter;
+import flash.display.BitmapData;
+import com.haxepunk.utils.Ease;
+import com.haxepunk.graphics.Graphiclist;
 
 /**
  * ...
@@ -19,6 +23,8 @@ class GravityPoint extends Entity
     public var circle:Entity;
     
     public var enabled:Bool;
+    
+    private var gravityEmitter:Emitter;
 
 	public function new(x:Int, y:Int) 
 	{
@@ -43,6 +49,20 @@ class GravityPoint extends Entity
         setHitbox( Std.int( _sprite.width * _sprite.scale ), Std.int( _sprite.height * _sprite.scale ) );
 		
 		graphic = _sprite;
+        
+        gravityEmitter = new Emitter(new BitmapData(2, 2), 3, 3);
+        
+        graphic = new Graphiclist( );
+        
+        cast( graphic, Graphiclist ).add( _sprite );
+        cast( graphic, Graphiclist ).add( gravityEmitter );
+        
+        // Define our particles
+        gravityEmitter.newType("explode",[0]);
+        gravityEmitter.setAlpha("explode",1,0);
+        gravityEmitter.setMotion("explode", 0, 50, 2, 360, -40, -0.5, Ease.quadOut );
+        gravityEmitter.setColor("explode", 0xa4639e, 0xff00ff );
+        gravityEmitter.relative = false;
 	}
 	
 	public override function update()
@@ -51,11 +71,12 @@ class GravityPoint extends Entity
         
         if ( enabled )
         {
-            world.add( circle );
+            gravityEmitter.emit("explode",x + width/2, y+ height/2);
+            //world.add( circle );
         }
         else
         {
-            world.remove( circle );    
+            //world.remove( circle );    
         }
     }
 }

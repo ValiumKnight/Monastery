@@ -33,6 +33,9 @@ class GameWorld extends World
 		add(player);
         add(player.gun);
 		add(plant);
+		
+        player.layer = 1;
+        player.gun.layer = 1;
         
         dynamic_entities.push( player );
 		
@@ -42,7 +45,7 @@ class GameWorld extends World
     public function createMap( )
     {
         // create the map, set the assets in your nmml file to bytes
-        var e = new TmxEntity("maps/map02.tmx");
+        var e = new TmxEntity("maps/map_level1.tmx");
 
         // load layers named bottom, main, top with the appropriate tileset
         e.loadGraphic("gfx/tiles.png", ["main"]);
@@ -71,7 +74,7 @@ class GameWorld extends World
         for ( gravity_point in gravity_points )
         {
             add( gravity_point );      
-            add( gravity_point.circle );
+            //add( gravity_point.circle );
         }
 
         add(e);
@@ -87,6 +90,7 @@ class GameWorld extends World
             {
                 if ( !gravity_point.enabled )
                 {
+                    entity.gravity.y = 0.5;
                     continue;
                 }
                 
@@ -94,12 +98,7 @@ class GameWorld extends World
                 {
                     if (entity.collide( CollisionType.GRAVITY_POINT, entity.x, entity.y ) != null )
                     {
-                        //trace( "done" );
                         continue;
-                    }
-                    else
-                    {
-                        //trace( "Attracting" );
                     }
                 }
                 
@@ -108,13 +107,21 @@ class GameWorld extends World
                 
                 var finalDistance:Float = Math.sqrt( Math.pow( planetDistance_x, 2 ) + Math.pow( planetDistance_y, 2 ) );
                 
-                if( finalDistance <= gravity_point.radius * 3 && finalDistance > 20 )
+                if( finalDistance <= gravity_point.radius * 3 )
                 {
+                    entity.gravity.y = 0;
+                    trace( "0!" );
+                        
                     var strength:Float = Math.abs(planetDistance_x) + Math.abs(planetDistance_y);
-                    var force_x:Float = planetDistance_x *( (1 / strength) * gravity_point.radius / finalDistance);
-                    var force_y:Float = planetDistance_y *( (1 / strength) * gravity_point.radius / finalDistance);
+                    var force_x:Float = planetDistance_x *( (1 / strength) * gravity_point.radius / finalDistance) * 5;
+                    var force_y:Float = planetDistance_y *( (1 / strength) * gravity_point.radius / finalDistance) * 5;
                     entity.acceleration.x -= force_x;
                     entity.acceleration.y -= force_y;
+                }
+                else
+                {
+                    entity.gravity.y = 0.5;
+                    trace( "0.5!" );
                 }
             }
         }
