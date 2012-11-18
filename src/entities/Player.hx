@@ -53,9 +53,7 @@ class Player extends PhysicsEntity
         Input.define("left", [Key.LEFT, Key.A]);
         Input.define("right", [Key.RIGHT, Key.D]);
 		Input.define("up", [Key.UP, Key.W, Key.SPACE]);
-        Input.define("equip", [Key.DOWN, Key.S]);
-		Input.define("equip", [Key.E]);
-		Input.define("equip", [Key.S]);
+        Input.define("equip", [Key.DOWN, Key.S, Key.E]);
 		
 		gravity.y = 0.5;
         maxVelocity.y = 1.1;
