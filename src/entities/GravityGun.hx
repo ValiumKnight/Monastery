@@ -78,7 +78,7 @@ class GravityGun extends Entity
         
         _sprite.centerOO( );
         
-        if ( cast( world, GameWorld ).player.flip )
+        /*if ( cast( world, GameWorld ).player.flip )
         {
             if( !flipped )
             {
@@ -92,7 +92,7 @@ class GravityGun extends Entity
             _sprite.angle += 180;
             _sprite.flipped = true;
             flipped = false;
-        }
+        }*/
     }
 	
 	public function setCords(newX, newY)
