@@ -15,7 +15,7 @@ import com.haxepunk.Sfx;
 
 class GravityGun extends Entity
 {
-    private var _sprite: PreRotation;
+  //  private var _sprite: PreRotation;
 	private var _bullet: Bullet;
 	private var _pointX: Float;
 	private var _pointY: Float;
@@ -37,12 +37,12 @@ class GravityGun extends Entity
         //gravityOnSfxs.push( new Sfx( "music/shoot3.wav" ) );
         //gravityOnSfxs.push( new Sfx( "music/shoot4.wav" ) );
 		
-		_sprite = new PreRotation("gfx/space_gun.png");
-		_sprite.scale = scaleFactor;
+	//	_sprite = new PreRotation("gfx/spatula.png");
+	//	_sprite.scale = scaleFactor;
         
         layer = 0;
         
-		graphic = _sprite;
+	//	graphic = _sprite;
 		
 		exists = true;
 
@@ -66,7 +66,7 @@ class GravityGun extends Entity
 	private function setAnimations()
     {
 		var frameAngle = -(Math.atan2(_pointY, _pointX) * (180 / Math.PI));
-		_sprite.frameAngle =  frameAngle;
+		//_sprite.frameAngle =  frameAngle;
 		
 		if (_shoot)
 		{
@@ -76,21 +76,21 @@ class GravityGun extends Entity
 			_shoot = false;
 		}
         
-        _sprite.centerOO( );
+     //   _sprite.centerOO( );
         
         if ( cast( world, GameWorld ).player.flip )
         {
             if( !flipped )
             {
-                _sprite.angle -= 180;
-                _sprite.flipped = false;
+        //        _sprite.angle -= 180;
+        //        _sprite.flipped = false;
                 flipped = true;
             }
         }
         else if ( flipped )
         {
-            _sprite.angle += 180;
-            _sprite.flipped = true;
+        //    _sprite.angle += 180;
+       //     _sprite.flipped = true;
             flipped = false;
         }
     }
