@@ -12,10 +12,13 @@ class Player extends PhysicsEntity
 	private var flip:Bool = false;
     private var sprite:Spritemap;
     private var scaleFactor:Float = 0.5;
+    public var Gun:GravityGun;
 
 	public function new(x:Float, y:Float) 
 	{
 		super(x, y);
+		
+		enableGun();
 		
 		sprite = new Spritemap( "gfx/swordguy2.png", 48, 32 );
         
@@ -44,6 +47,10 @@ class Player extends PhysicsEntity
 
         
         setHitbox( Std.int( sprite.width * scaleFactor ), Std.int( sprite.height * scaleFactor ) );
+	}
+	public function enableGun()
+	{
+		Gun = new GravityGun( 50, 35 );
 	}
 	
 	// set velocity based on keyboard input
@@ -81,6 +88,7 @@ class Player extends PhysicsEntity
         if ( Math.abs( velocity.x ) < 0.3 && onGround( ) )
         {
             sprite.play("stand");
+
         }
         else
         {
@@ -88,7 +96,7 @@ class Player extends PhysicsEntity
         }
         
         sprite.flipped = flip;
-		
+		Gun.setCords(x, y);		
     }
 	
 	public override function update()

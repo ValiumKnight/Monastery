@@ -12,6 +12,8 @@ import entities.CollisionType;
 
 class GameWorld extends World
 {
+	private var Player:Player;
+	
 	public function new() 
 	{
 		super ();
@@ -19,10 +21,10 @@ class GameWorld extends World
 	
 	public override function begin()
 	{
-		
-		add( new Player( 50, 50 ) );
-        
-		add( new GravityGun( 50, 35 ) );
+		Player = new Player( 50, 50 );
+		add(Player);
+        add(Player.Gun);
+
 		
         createMap( );
 	}
