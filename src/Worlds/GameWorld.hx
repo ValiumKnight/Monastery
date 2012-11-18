@@ -162,8 +162,8 @@ class GameWorld extends World
                     entity.gravity.y = 0;
                         
                     var strength:Float = Math.abs(planetDistance_x) + Math.abs(planetDistance_y);
-                    var force_x:Float = planetDistance_x *( (1 / strength) * gravity_point.radius / finalDistance) * 1;
-                    var force_y:Float = planetDistance_y *( (1 / strength) * gravity_point.radius / finalDistance) * 1;
+                    var force_x:Float = planetDistance_x *( (1 / strength) * gravity_point.radius / finalDistance) * 0.8;
+                    var force_y:Float = planetDistance_y *( (1 / strength) * gravity_point.radius / finalDistance) * 0.8;
                     entity.acceleration.x -= force_x;
                     entity.acceleration.y -= force_y;
                 }

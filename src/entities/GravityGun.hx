@@ -32,17 +32,9 @@ class GravityGun extends Entity
         
         gravityOnSfxs = new Array<Sfx>( );
         
-        gravityOnSfxs.push( new Sfx( "music/shoot1.wav" ) );
-        //gravityOnSfxs.push( new Sfx( "music/shoot2.wav" ) );
-        //gravityOnSfxs.push( new Sfx( "music/shoot3.wav" ) );
-        //gravityOnSfxs.push( new Sfx( "music/shoot4.wav" ) );
-		
-	//	_sprite = new PreRotation("gfx/spatula.png");
-	//	_sprite.scale = scaleFactor;
+        gravityOnSfxs.push( new Sfx( "sfx/shoot1.wav" ) );
         
         layer = 0;
-        
-	//	graphic = _sprite;
 		
 		exists = true;
 
@@ -51,8 +43,6 @@ class GravityGun extends Entity
 	// set velocity based on keyboard input
     private function handleInput()
     {
-		//trace(Input.mouseX + "," + Input.mouseY);
-		
 		_pointX = Input.mouseX - x;
 		_pointY = Input.mouseY - y;
 		
@@ -66,33 +56,14 @@ class GravityGun extends Entity
 	private function setAnimations()
     {
 		var frameAngle = -(Math.atan2(_pointY, _pointX) * (180 / Math.PI));
-		//_sprite.frameAngle =  frameAngle;
 		
 		if (_shoot)
 		{
-            gravityOnSfxs[Std.int( Math.random( )* gravityOnSfxs.length )].play( );
+            gravityOnSfxs[Std.int( 0* gravityOnSfxs.length )].play( );
 			_bullet = new Bullet(x + width, y + height / 4, _pointX, _pointY, frameAngle);
 			world.add(_bullet);
 			_shoot = false;
 		}
-        
-     //   _sprite.centerOO( );
-        
-        if ( cast( world, GameWorld ).player.flip )
-        {
-            if( !flipped )
-            {
-        //        _sprite.angle -= 180;
-        //        _sprite.flipped = false;
-                flipped = true;
-            }
-        }
-        else if ( flipped )
-        {
-        //    _sprite.angle += 180;
-       //     _sprite.flipped = true;
-            flipped = false;
-        }
     }
 	
 	public function setCords(newX, newY)

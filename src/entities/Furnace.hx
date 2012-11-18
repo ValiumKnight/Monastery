@@ -33,20 +33,20 @@ class Furnace extends Entity
     {
         _sprite = new Image( "gfx/furnace.png" );
         
-        new Sfx( "music/burn_plant.wav" ).play( );
+        new Sfx( "sfx/burn_plant.wav" ).play( );
         
         var i:Int = Std.int( Math.random( )*3 );
         
         switch( i )
         {
             case 0:
-                new Sfx( "music/no-hard-feelings.mp3" ).play( );
+                new Sfx( "sfx/no-hard-feelings.mp3" ).play( );
             case 1:
-                new Sfx( "music/i-don-t-hate-you.mp3" ).play( );
+                new Sfx( "sfx/i-don-t-hate-you.mp3" ).play( );
             case 2:
-                new Sfx( "music/wooo.mp3" ).play( );          
+                new Sfx( "sfx/wooo.mp3" ).play( );          
             case 3:
-                new Sfx( "music/i-don-t-blame-you.mp3" ).play( );    
+                new Sfx( "sfx/i-don-t-blame-you.mp3" ).play( );    
         }
         
         i++;

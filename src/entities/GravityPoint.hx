@@ -9,6 +9,7 @@ import com.haxepunk.Sfx;
 import flash.display.BitmapData;
 import com.haxepunk.utils.Ease;
 import com.haxepunk.graphics.Graphiclist;
+import worlds.GameWorld;
 
 /**
  * ...
@@ -44,7 +45,7 @@ class GravityPoint extends Entity
         
         _sprite = new Spritemap("gfx/gravity_point_off.png");        
         
-        gravityOnSfx = new Sfx( "music/gravity_on.wav" );
+        gravityOnSfx = new Sfx( "sfx/gravity_on.wav" );
         
         type = CollisionType.GRAVITY_POINT;
         
@@ -74,7 +75,17 @@ class GravityPoint extends Entity
         if ( enabled )
         {
             cast( graphic, Graphiclist ).removeAll( );
-            _sprite = new Spritemap("gfx/gravity_point_on.png");
+            
+            if ( this == GameWorld.button_gp )
+            {
+                _sprite = new Spritemap("gfx/gravity_point_b_on.png");
+                gravityEmitter.setColor("explode", 0x1EEA37, 0x649B6C );
+            }
+            else
+            {
+                _sprite = new Spritemap("gfx/gravity_point_on.png");
+                gravityEmitter.setColor("explode", 0xa4639e, 0xff00ff );
+            }
             cast( graphic, Graphiclist ).add( _sprite );
             cast( graphic, Graphiclist ).add( gravityEmitter );
             gravityEmitter.emit("explode", x + width / 2, y + height / 2);
@@ -82,7 +93,14 @@ class GravityPoint extends Entity
         else
         {
             cast( graphic, Graphiclist ).removeAll( );
-            _sprite = new Spritemap("gfx/gravity_point_off.png");
+            if ( this == GameWorld.button_gp )
+            {
+                _sprite = new Spritemap("gfx/gravity_point_b_off.png");
+            }
+            else
+            {
+                _sprite = new Spritemap("gfx/gravity_point_off.png");
+            }
             cast( graphic, Graphiclist ).add( _sprite );
         }
         

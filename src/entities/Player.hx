@@ -39,7 +39,7 @@ class Player extends PhysicsEntity
         
         layer = 5;
         
-        jetpackSfx = new Sfx( "music/jetpack.wav" );
+        jetpackSfx = new Sfx( "sfx/jetpack.wav" );
 	
 		sprite = new Spritemap( "gfx/chef_small.png", 24, 24 );
 
@@ -97,7 +97,7 @@ class Player extends PhysicsEntity
 
 		if ( Input.check("up") && _actualFuel > 0 )
 		{   
-            //if ( !jetpackSfx.playing )
+            if ( !jetpackSfx.playing )
             {
                 jetpackSfx.play( );
             }
@@ -164,7 +164,7 @@ class Player extends PhysicsEntity
                 if ( !_takenBefore )
                 {
                     _takenBefore = true;
-                    new Sfx( "music/hello-friend.mp3" ).play( );
+                    new Sfx( "sfx/hello-friend.mp3" ).play( );
                 }
 				_equiped = true;
 			}

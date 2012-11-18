@@ -28,23 +28,18 @@ class Button extends Entity
 	
 	public override function update()    
 	{ 
-		
-		
 		if ( ( cast(collide( CollisionType.PLAYER , x , y ) != null ) )|| (
 			 cast(collide( CollisionType.PLANT , x , y ) != null ) ) )
 		{
-			
 			if ( GameWorld.button_gp != null ) {
 				GameWorld.button_gp.enabled = true;
 			}
-			trace("Button pressed");
 		}
 		else
 		{
 			if ( GameWorld.button_gp != null ) {
 				GameWorld.button_gp.enabled = false;
 			}
-			trace("");
 		}
 	}
 

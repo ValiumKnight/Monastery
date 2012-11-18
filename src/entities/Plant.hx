@@ -116,6 +116,7 @@ class Plant extends PhysicsEntity
 			}
 			
 		}
+        
 		_plant_sprite.flipped = _go_left;
 		
     }
