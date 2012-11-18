@@ -28,6 +28,8 @@ class GravityPoint extends Entity
     private var gravityEmitter:Emitter;
     
     private var gravityOnSfx:Sfx;
+	
+	public static var count = 0;
 
 	public function new(x:Int, y:Int) 
 	{

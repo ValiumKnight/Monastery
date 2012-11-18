@@ -1,6 +1,7 @@
 import com.haxepunk.Engine;
 import com.haxepunk.HXP;
 import worlds.Intro;
+import com.haxepunk.Sfx;
 
 class Main extends Engine
 {
@@ -28,11 +29,7 @@ class Main extends Engine
 		HXP.screen.color = kClearColor;
 		HXP.screen.scale = 1;
 		HXP.world = new Intro();
+        
+        new Sfx( "music/steve_counting-sheep-01-320.mp3" ).loop( );
 	}
-
-	public static function main()
-	{
-		new Main();
-	}
-
 }

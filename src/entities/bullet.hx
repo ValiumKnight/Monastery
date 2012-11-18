@@ -10,6 +10,7 @@ import com.haxepunk.utils.Key;
 class Bullet extends PhysicsEntity
 {    
 	public static var exists:Bool = false;
+	public static var GP:GravityPoint;
 	private var orb:Spritemap;
 	private var _deltaX:Float;
 	private var _deltaY:Float;
@@ -72,7 +73,12 @@ class Bullet extends PhysicsEntity
         
         if ( gp != null )
         {
-            gp.toggle( );
+			if (GP != null && GP.enabled && GP != gp)
+			{
+				GP.toggle( );
+			}
+			gp.toggle();
+			GP = gp;
 			destroyBullet();
         }
         
