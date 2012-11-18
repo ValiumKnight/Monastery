@@ -35,8 +35,6 @@ class Player extends PhysicsEntity
 		Input.define("up", [Key.UP, Key.W, Key.SPACE]);
         Input.define("down", [Key.DOWN, Key.S]);
 		
-
-		
 		gravity.y = 0.5;
         maxVelocity.y = 12;
         maxVelocity.x = 1.5;
@@ -73,11 +71,6 @@ class Player extends PhysicsEntity
             acceleration.y = -gravity.y * maxVelocity.y;
 		}
 		
-		if (Input.mousePressed && !Bullet.exists)
-		{    
-			world.add(new Bullet(x + width, y + height / 4));
-			
-		}	
 
     }
 	

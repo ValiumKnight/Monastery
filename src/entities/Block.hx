@@ -26,9 +26,4 @@ class Block extends Entity
         
         setHitbox( _sprite.width, _sprite.height );
 	}
-	
-	public override function update()
-    {
-        super.update();
-    }
 }

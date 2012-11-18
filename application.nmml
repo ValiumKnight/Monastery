@@ -3,10 +3,10 @@
 	<!-- NMML reference: https://gist.github.com/1763850 -->
 	
 	<!-- metadata, make sure 'package' is at least 3 segments (ie. com.mycompany.myproject) -->
-	<meta title="HaxePunkTemplate" package="com.cap.HaxePunkTemplate" version="1.0.0" company="ValiumKnight" />
+	<meta title="Monastery" package="com.osgcc.Monastery" version="1.0.0" company="ValiumKnight" />
 
 	<!-- output -->
-	<app main="Main" file="HaxePunkTemplate" path="bin" />
+	<app main="Main" file="Monastery" path="bin" />
 
 	<window background="#333333" fps="60" />
 	<window width="640" height="480" unless="mobile" />
@@ -17,6 +17,7 @@
 	<classpath name="src" />
 	<haxelib name="nme" />
 	<haxelib name="HaxePunk" />
+    <haxelib name="box2d" />
 
 	<!-- assets -->
 	<icon path="assets/icon.svg" />
