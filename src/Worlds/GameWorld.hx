@@ -59,7 +59,7 @@ class GameWorld extends World
     public function createMap( )
     {
         // create the map, set the assets in your nmml file to bytes
-        var e = new TmxEntity("maps/map_level1.tmx");
+        var e = new TmxEntity("maps/map_level1b.tmx");
 
         // load layers named bottom, main, top with the appropriate tileset
         e.loadGraphic("gfx/tiles.png", ["main"]);
