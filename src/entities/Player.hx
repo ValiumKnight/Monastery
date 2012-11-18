@@ -67,11 +67,6 @@ class Player extends PhysicsEntity
             acceleration.y = -gravity.y * maxVelocity.y;
 		}
 		
-		if (Input.mousePressed && !Bullet.exists)
-		{    
-			world.add(new Bullet(x + width, y + height / 4));
-			
-		}	
 
     }
 	
