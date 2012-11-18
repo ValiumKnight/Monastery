@@ -53,6 +53,7 @@ class Furnace extends Entity
         
         graphic = _sprite;
 		
-
+		GameWorld.door.unlock();
+		
     }
 }
