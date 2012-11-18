@@ -18,7 +18,7 @@ class Furnace extends Entity
 	{
 		super(x, y);
         
-        _sprite = new Image("gfx/furnace.png");
+        _sprite = new Image( "gfx/furnace_off.png" );
 		
 		graphic = _sprite;
         
@@ -26,4 +26,11 @@ class Furnace extends Entity
         
         setHitbox( _sprite.width, _sprite.height );
 	}
+    
+    public function burnPlant( )
+    {
+        _sprite = new Image( "gfx/furnace.png" );
+        
+        graphic = _sprite;
+    }
 }

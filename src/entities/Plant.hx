@@ -51,16 +51,7 @@ class Plant extends PhysicsEntity
 	//Set the animation based on 
 	private function setAnimations()
     {
-		if ( collide( CollisionType.FURNACE , x , y ) != null )
-		{	
-			var player:Player = cast(collide( CollisionType.PLAYER , x , y ), Player);
-			
-			if (player != null ) {
-				player._equiped = false;
-			}
-            
-			destroy();
-		}
+        _plant_sprite.play( "stand" );
     }
 	
 	public function setCords(newX, newY)
@@ -73,7 +64,21 @@ class Plant extends PhysicsEntity
     {   
         super.update();
         
-        _plant_sprite.play( "stand" );
+        var furnace:Furnace = cast( collide( CollisionType.FURNACE , x , y ), Furnace );
+        
+		if ( furnace != null )
+		{	
+			var player:Player = cast(collide( CollisionType.PLAYER , x , y ), Player);
+			
+			if( player != null ) 
+            {
+				player._equiped = false;
+			}
+            
+            furnace.burnPlant( );
+            
+			destroy();
+		}
         
 		handleInput();
         

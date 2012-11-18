@@ -38,6 +38,7 @@ class GravityGun extends Entity
         //gravityOnSfxs.push( new Sfx( "music/shoot4.wav" ) );
 		
 		_sprite = new PreRotation("gfx/space_gun.png");
+        _sprite.centerOO( );
 		_sprite.scale = scaleFactor;
         
         layer = 0;
@@ -75,29 +76,11 @@ class GravityGun extends Entity
 			world.add(_bullet);
 			_shoot = false;
 		}
-        
-        _sprite.centerOO( );
-        
-        if ( cast( world, GameWorld ).player.flip )
-        {
-            if( !flipped )
-            {
-                _sprite.angle -= 180;
-                _sprite.flipped = false;
-                flipped = true;
-            }
-        }
-        else if ( flipped )
-        {
-            _sprite.angle += 180;
-            _sprite.flipped = true;
-            flipped = false;
-        }
     }
 	
-	public function setCords(newX, newY)
-    {   
-		x = newX + 10.0;
+	public function setCords(newX:Float, newY:Float)
+    {
+        x = newX;
 		y = newY;
     }	
 	
