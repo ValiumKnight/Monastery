@@ -102,8 +102,8 @@ class GameWorld extends World
                 if( finalDistance <= gravity_point.radius * 3 && finalDistance > 20 )
                 {
                     var strength:Float = Math.abs(planetDistance_x) + Math.abs(planetDistance_y);
-                    var force_x:Float = planetDistance_x *( (1 / strength) * gravity_point.radius / finalDistance) / 1.5;
-                    var force_y:Float = planetDistance_y *( (1 / strength) * gravity_point.radius / finalDistance) / 1.5;
+                    var force_x:Float = planetDistance_x *( (1 / strength) * gravity_point.radius / finalDistance);
+                    var force_y:Float = planetDistance_y *( (1 / strength) * gravity_point.radius / finalDistance);
                     entity.acceleration.x -= force_x;
                     entity.acceleration.y -= force_y;
                 }

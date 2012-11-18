@@ -23,19 +23,19 @@ class GravityPoint extends Entity
 	{
 		super(x, y);
         
-        radius = 40;
+        radius = 20;
         
-        circle = new Entity( x - radius*3, y - radius*3 );
+        _sprite = new Spritemap("gfx/block.png");
+        
+        _sprite.scale = 0.5;
+        
+        circle = new Entity( x - radius*3 + _sprite.width / 4, y - radius*3 + _sprite.height / 4 );
         
         var circle_image:Image = Image.createCircle(radius*3, 660066);
         
         circle_image.alpha = 0.4;
         
         circle.graphic = circle_image;
-        
-        _sprite = new Spritemap("gfx/block.png");
-        
-        _sprite.scale = 0.5;
         
         type = CollisionType.GRAVITY_POINT;
         

@@ -35,7 +35,7 @@ class Player extends PhysicsEntity
 		Input.define("up", [Key.UP, Key.W, Key.SPACE]);
         Input.define("down", [Key.DOWN, Key.S]);
 		
-		gravity.y = 0.3;
+		gravity.y = 0.1;
         maxVelocity.y = 12;
         maxVelocity.x = 1.5;
         friction.x = 1;
@@ -66,8 +66,6 @@ class Player extends PhysicsEntity
 		{
             acceleration.y = -gravity.y * maxVelocity.y;
 		}
-		
-
     }
 	
 	//Set the animation based on 
