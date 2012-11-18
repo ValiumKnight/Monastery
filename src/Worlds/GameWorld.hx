@@ -1,6 +1,7 @@
 package worlds;
 
 import com.haxepunk.Entity;
+import com.haxepunk.Sfx;
 import com.haxepunk.tmx.TmxEntity;
 import com.haxepunk.tmx.TmxObjectGroup;
 import com.haxepunk.World;
@@ -19,11 +20,14 @@ class GameWorld extends World
     private var player:Player;
     private var plant:Plant;
     public var dynamic_entities:Array<PhysicsEntity>;
-    public var gravity_points:Array<GravityPoint>;    
+    public var gravity_points:Array<GravityPoint>;
+    public var ost:Sfx;
     
 	public function new() 
 	{
 		super ( );
+        
+        ost = new Sfx( "music/steve_counting-sheep-01-320.mp3" );
         
         dynamic_entities = new Array<PhysicsEntity>( );
         gravity_points = new Array<GravityPoint>( );
@@ -96,6 +100,11 @@ class GameWorld extends World
     public override function update( )
     {
         super.update( );
+        
+        if ( !ost.playing )
+        {
+            ost.play( );
+        }
         
         for ( entity in dynamic_entities ) 
         {            
