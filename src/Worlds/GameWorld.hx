@@ -152,7 +152,7 @@ class GameWorld extends World
                 
                 var finalDistance:Float = Math.sqrt( Math.pow( planetDistance_x, 2 ) + Math.pow( planetDistance_y, 2 ) );
                 
-                if( finalDistance <= gravity_point.radius * 3 )
+                if( finalDistance <= gravity_point.radius )
                 {
                     entity.gravity.y = 0;
                         
