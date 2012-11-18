@@ -72,7 +72,7 @@ class Player extends PhysicsEntity
 				maxVelocity.y = 3;
 			}
             acceleration.y = -gravity.y * maxVelocity.y;
-			_fuel-=3;
+			_fuel-=4;
 			
 		}
 		

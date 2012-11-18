@@ -8,6 +8,7 @@ import com.haxepunk.graphics.Image;
 import entities.Block;
 import entities.GravityGun;
 import entities.GravityPoint;
+import entities.Plant;
 import entities.Player;
 import entities.CollisionType;
 import com.matttuttle.PhysicsEntity;
@@ -15,7 +16,7 @@ import com.matttuttle.PhysicsEntity;
 class GameWorld extends World
 {
     private var player:Player;
-    
+    private var plant:Plant;
     public var dynamic_entities:Array<PhysicsEntity>;
     public var gravity_points:Array<GravityPoint>;    
     
@@ -27,8 +28,11 @@ class GameWorld extends World
         gravity_points = new Array<GravityPoint>( );
         
         player = new Player( 50, 50 );
+		plant = new Plant (50, 75, "space_gun.png");
+		
 		add(player);
         add(player.gun);
+		add(plant);
         
         dynamic_entities.push( player );
 		
