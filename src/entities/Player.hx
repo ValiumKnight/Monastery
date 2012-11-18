@@ -1,11 +1,15 @@
 package entities;
 
+import com.haxepunk.graphics.Graphiclist;
 import com.haxepunk.HXP;
 import com.haxepunk.Entity;
 import com.haxepunk.graphics.Spritemap;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
+import com.haxepunk.graphics.Emitter;
+import com.haxepunk.utils.Ease;
 import com.matttuttle.PhysicsEntity;
+import nme.display.BitmapData;
 
 class Player extends PhysicsEntity
 {
@@ -14,6 +18,8 @@ class Player extends PhysicsEntity
     private var scaleFactor:Float = 0.5;
 	private var _fuel:Float = 100;
     public var gun:GravityGun;
+    private var explosionEmitter:Emitter;
+    
 	public function new(x:Float, y:Float) 
 	{
 		super(x, y);
@@ -27,19 +33,31 @@ class Player extends PhysicsEntity
         
         sprite.scale = scaleFactor;
 		
-		graphic = sprite;
-		
 		// defines left, right, up, down as arrow keys and WASD controls
         Input.define("left", [Key.LEFT, Key.A]);
         Input.define("right", [Key.RIGHT, Key.D]);
 		Input.define("up", [Key.UP, Key.W, Key.SPACE]);
         Input.define("down", [Key.DOWN, Key.S]);
 		
-		gravity.y = 0.1;
-        maxVelocity.y = 1.5;
+		gravity.y = 0.5;
+        maxVelocity.y = 3;
         maxVelocity.x = 1.5;
         friction.x = 1;
         friction.y = 0;
+        
+        explosionEmitter = new Emitter(new BitmapData(2, 2), 3, 3);
+        
+        // Define our particles
+        explosionEmitter.newType("explode",[0]);
+        explosionEmitter.setAlpha("explode",1,0);
+        explosionEmitter.setMotion("explode", 0, 50, 4, 180, -40, -0.5, Ease.quadOut );
+        explosionEmitter.setColor("explode", 0xff0000, 0xffff00 );
+        explosionEmitter.relative = false;
+        
+        graphic = new Graphiclist( );
+        
+        cast( graphic, Graphiclist ).add( sprite );
+        cast( graphic, Graphiclist ).add( explosionEmitter );
         
         type = CollisionType.PLAYER;
         
@@ -64,8 +82,8 @@ class Player extends PhysicsEntity
 		if ( Input.check("up") && _fuel > 0 )
 		{   
             acceleration.y = -gravity.y * maxVelocity.y;
-			_fuel-=2;
-			
+			_fuel-=10;
+			explosionEmitter.emit("explode",x + width/2, y+ height/2);
 		}
 		
 		if ( _fuel < 100 && !Input.check("up"))
@@ -78,7 +96,7 @@ class Player extends PhysicsEntity
 			_fuel = 100;
 		}
 		
-		trace ("FUEL =" + _fuel + "%");
+		//trace ("FUEL =" + _fuel + "%");
     }
 	
 	//Set the animation based on 
