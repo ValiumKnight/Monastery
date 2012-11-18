@@ -16,7 +16,7 @@ class Player extends PhysicsEntity
 {
 	private var flip:Bool = false;
 	private var _equip:Bool = false;
-	private var _equiped:Bool = false;
+	public var _equiped:Bool = false;
     private var sprite:Spritemap;
     private var scaleFactor:Float = .5;
 	private var _actualFuel:Float = 16;
@@ -166,14 +166,26 @@ class Player extends PhysicsEntity
 			}
 		}
 		
-		if (_equiped) {
+		if (_equiped && plant != null) 
+		{
 			trace("Plant equiped");
+			gun.destroy();
 			plant.setCords(x, y);
+		}
+		else if (!_equiped && !GravityGun.exists) 
+		{
+			trace("Create Gun!");
+			gun = new GravityGun(x, y);
+			gun.layer = 1;
+			world.add(gun);
 		}
         
         sprite.flipped = flip;
-		gun.setCords(x, y);		
-    }
+		if ( gun != null )
+		{
+			gun.setCords(x, y);		
+		}
+	}
 	
 	public override function update()
     {   
