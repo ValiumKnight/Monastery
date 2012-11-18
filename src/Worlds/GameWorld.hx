@@ -16,6 +16,9 @@ import entities.Button;
 import entities.CollisionType;
 import com.matttuttle.PhysicsEntity;
 import entities.Spikes;
+import com.haxepunk.utils.Key;
+import com.haxepunk.utils.Input;
+import com.haxepunk.HXP;
 
 class GameWorld extends World
 {
@@ -28,14 +31,13 @@ class GameWorld extends World
     public static var door:Door;
 	public static var button_gp:GravityPoint;
 	
-	public function new(world:String, nextWorld:String) 
+	public function new(world:String) 
 	{
 		super ( );
         
         _world = world;
         
-        _nextWorld = nextWorld;
-        
+		
         var background:Entity = new Entity( );
         
         background.graphic = new Image( "gfx/space_window.png" );
@@ -46,8 +48,11 @@ class GameWorld extends World
         gravity_points = new Array<GravityPoint>( );
 		
         createMap( );
+
+		trace(Intro.cur_lvl);
+		Input.define("nxt_lvl", [Key.F1]);
+
 	}
-	
     public function createMap( )
     {
         // create the map, set the assets in your nmml file to bytes
@@ -126,6 +131,18 @@ class GameWorld extends World
     {
         super.update( );
         
+		if ( Input.pressed("nxt_lvl") ) {
+			if (Intro.cur_lvl == 2)
+			{
+				Intro.cur_lvl = 0;
+			}
+			else
+			{
+				Intro.cur_lvl++;
+			}
+            HXP.world = new GameWorld( Intro.level[Intro.cur_lvl] );
+		}
+		
         for ( entity in dynamic_entities ) 
         {            
             for ( gravity_point in gravity_points )
