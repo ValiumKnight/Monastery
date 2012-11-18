@@ -7,10 +7,10 @@ import com.haxepunk.utils.Key;
 
 /**
  * ...
- * @author Rob Filippi
+ * @author me
  */
 
-class Block extends Entity
+class Spikes extends Entity
 {
     private var _sprite: Image;
 
@@ -18,7 +18,7 @@ class Block extends Entity
 	{
 		super(x, y);
         
-        _sprite = new Image("gfx/furnace.png");
+        _sprite = new Image("gfx/spikes.png");
 		
 		graphic = _sprite;
         
