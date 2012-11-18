@@ -66,10 +66,13 @@ class Player extends PhysicsEntity
 		{            
             acceleration.y = -gravity.y * maxVelocity.y;
 		}
-		if (Input.check("shoot"))
+		
+		if (Input.check("shoot") && !Bullet.exists)
 		{    
 			world.add(new Bullet(x + width, y + height / 4));
-		}
+			
+		}	
+
     }
 	
 	//Set the animation based on 
@@ -86,6 +89,7 @@ class Player extends PhysicsEntity
         }
         
         sprite.flipped = flip;
+		
     }
 	
 	public override function update()
