@@ -7,6 +7,7 @@ import com.haxepunk.tmx.TmxObjectGroup;
 import com.haxepunk.World;
 import com.haxepunk.graphics.Image;
 import entities.Block;
+import entities.Door;
 import entities.GravityGun;
 import entities.GravityPoint;
 import entities.Plant;
@@ -84,6 +85,11 @@ class GameWorld extends World
                 if ( object.type == "gravitypoint" )
                 {
                     gravity_points.push( new GravityPoint( object.x, object.y ) );
+                }                
+				
+				if ( object.type == "door" )
+                {
+                    add( new Door( object.x, object.y ) );
                 }
             }
         }
