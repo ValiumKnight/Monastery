@@ -61,6 +61,7 @@ class Bullet extends PhysicsEntity
 	public override function update()    
 	{
         setSpeed( );
+        
 		moveBy(_deltaX / 10, _deltaY / 10, "enemy");
 		super.update();
 			

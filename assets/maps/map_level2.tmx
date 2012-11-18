@@ -14,7 +14,7 @@
   <object type="gravitypoint" x="224" y="132"/>
   <object type="plant" x="72" y="256"/>
   <object type="furnace" x="340" y="86"/>
-  <object type="player" x="253" y="291"/>
+  <object type="player" x="253" y="286"/>
   <object type="spikes" x="153" y="340"/>
   <object name="spikes" x="174" y="341"/>
   <object type="spikes" x="198" y="343"/>
@@ -22,6 +22,6 @@
   <object type="spikes" x="355" y="340"/>
   <object type="spikes" x="409" y="340"/>
   <object type="spikes" x="381" y="335"/>
-  <object type="door" x="439" y="313"/>
+  <object type="door" x="429" y="301"/>
  </objectgroup>
 </map>

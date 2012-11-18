@@ -38,7 +38,7 @@ class GravityPoint extends Entity
 	{
 		super(x, y);
         
-        radius = 30;
+        radius = 60;
         
         count = Std.int( Math.random( ) * 20 );
         
@@ -48,7 +48,9 @@ class GravityPoint extends Entity
         
         type = CollisionType.GRAVITY_POINT;
         
-        setHitbox( Std.int( _sprite.width * _sprite.scale ), Std.int( _sprite.height * _sprite.scale ) );
+        setHitbox( Std.int( _sprite.width ), Std.int( _sprite.height ) );
+        
+        trace(  Std.int( _sprite.width ) + " , " + Std.int( _sprite.height ) );
 		
 		graphic = _sprite;
         
@@ -62,7 +64,7 @@ class GravityPoint extends Entity
         // Define our particles
         gravityEmitter.newType("explode",[0]);
         gravityEmitter.setAlpha("explode",1,0);
-        gravityEmitter.setMotion("explode", 0, radius*2, 4, 360, -40, -0.5, Ease.quadOut );
+        gravityEmitter.setMotion("explode", 0, radius, 4, 360, -40, -0.5, Ease.quadOut );
         gravityEmitter.setColor("explode", 0xa4639e, 0xff00ff );
         gravityEmitter.relative = false;
 	}
@@ -91,7 +93,7 @@ class GravityPoint extends Entity
             y = up? y + 1 : y - 1;
         }
         
-        if ( count == 20 )
+        if ( count == 40 )
         {
             up = !up;
             count = 0;
