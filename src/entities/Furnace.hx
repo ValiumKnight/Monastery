@@ -10,7 +10,7 @@ import com.haxepunk.utils.Key;
  * @author Rob Filippi
  */
 
-class Block extends Entity
+class Furnace extends Entity
 {
     private var _sprite: Image;
 

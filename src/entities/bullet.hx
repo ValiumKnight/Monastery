@@ -18,7 +18,8 @@ class Bullet extends PhysicsEntity
 	
 	public function new(x:Float, y:Float, dX:Float, dY:Float, angle:Float)    
 	{        
-		super(x, y); 
+		super(x, y);
+        
 		_deltaX = dX;
 		_deltaY = dY;
 		_angle = angle;
@@ -57,7 +58,8 @@ class Bullet extends PhysicsEntity
     }
 	
 	public override function update()    
-	{  
+	{
+        setSpeed( );
 		moveBy(_deltaX / 10, _deltaY / 10, "enemy");
 		super.update();
 			
@@ -77,10 +79,10 @@ class Bullet extends PhysicsEntity
 		setAnimations();
 		handleInput();
 	}
+    
 	private function setSpeed()
 	{
-		
-		while (_deltaX > 10 || _deltaY > 10) {
+		while (_deltaX > 45 || _deltaY > 45 ) {
 			_deltaX = _deltaX / 2;
 			_deltaY = _deltaY / 2;
 		}

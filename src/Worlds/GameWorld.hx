@@ -6,7 +6,7 @@ import com.haxepunk.tmx.TmxEntity;
 import com.haxepunk.tmx.TmxObjectGroup;
 import com.haxepunk.World;
 import com.haxepunk.graphics.Image;
-import entities.Block;
+import entities.Furnace;
 import entities.Door;
 import entities.GravityGun;
 import entities.GravityPoint;
@@ -27,6 +27,12 @@ class GameWorld extends World
 	public function new() 
 	{
 		super ( );
+        
+        var background:Entity = new Entity( );
+        
+        background.graphic = new Image( "gfx/interior_spaceship.png" );
+        
+        add( background );
         
         ost = new Sfx( "music/steve_counting-sheep-01-320.mp3" );
         
@@ -67,21 +73,16 @@ class GameWorld extends World
         {
             for ( object in objectGroup.objects )
             {
-                if ( object.type == "crate" )
-                {
-                    add( new Block( object.x, object.y ) );
-                }                
-				
 				if ( object.type == "furnace" )
                 {
-                    add( new Block( object.x, object.y ) );
+                    add( new Furnace( object.x, object.y ) );
                 }				
 				
 				if ( object.type == "spikes" )
                 {
                     add( new Spikes( object.x, object.y ) );
                 }
-                
+                    
                 if ( object.type == "gravitypoint" )
                 {
                     gravity_points.push( new GravityPoint( object.x, object.y ) );
@@ -96,11 +97,10 @@ class GameWorld extends World
       
         for ( gravity_point in gravity_points )
         {
-            add( gravity_point );      
-            //add( gravity_point.circle );
+            add( gravity_point );
         }
 
-        add(e);
+        add( e );
     }
     
     public override function update( )
