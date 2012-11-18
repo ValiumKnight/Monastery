@@ -15,8 +15,8 @@ class Plant extends PhysicsEntity
 	private var _pointY: Float;
 	private var _shoot: Bool = false;
 	private var _walks: Bool = false;
-	private var _go_left: Bool = false;
-	private var _go_right: Bool = true;
+	private var _go_left: Bool;
+	private var _go_right: Bool;
 	private var scaleFactor:Float = 0.25;
 
 	public function new(x:Float, y:Float, image:String, walk:Bool) 
@@ -24,7 +24,8 @@ class Plant extends PhysicsEntity
 		super(x, y);
 		
 		_walks = walk;
-		
+		_go_left = false;
+		_go_right = true;
 		_plant_sprite = new Spritemap("gfx/" + image, 70, 72);
         
         _plant_sprite.add( "stand", [ 0, 1, 2, 3, 4, 5,
@@ -60,29 +61,17 @@ class Plant extends PhysicsEntity
 		{
 			if (_go_right)
 			{
+				trace("Going Right");
 				acceleration.x = maxVelocity.x;
 			}
-			if (_go_left)
+			else if (_go_left)
 			{
+				trace("Going Left");
 				acceleration.x = -maxVelocity.x;
 			}
 		}
-		if ( collide( CollisionType.FURNACE , x , y ) != null )
-		{	
-			var player:Player = cast(collide( CollisionType.PLAYER , x , y ), Player);
-			
-			if (player != null ) {
-				player._equiped = false;
-			}
-            
-			destroy();
-		}
-		if ( collide( CollisionType.STATIC_SOLID , x+10 , y ) != null )
-		{	      
-			_go_right = !_go_right;
-			_go_left = !_go_left;
-		}
-		_plant_sprite.flipped = _go_left;
+		
+        _plant_sprite.play( "stand" );
     }
 	
 	public function setCords(newX, newY)
@@ -94,12 +83,47 @@ class Plant extends PhysicsEntity
 	public override function update()
     {   
         super.update();
+		
+        setAnimations( );
+        var furnace:Furnace = cast( collide( CollisionType.FURNACE , x , y ), Furnace );
         
-        _plant_sprite.play( "stand" );
+		if ( furnace != null )
+		{	
+			var player:Player = cast(collide( CollisionType.PLAYER , x , y ), Player);
+			
+			if( player != null ) 
+            {
+				player._equiped = false;
+			}
+            
+            furnace.burnPlant( );
+            
+			destroy();
+		}
         
 		handleInput();
-        
-        setAnimations( );
+		
+		if ( onWall() )
+		{	    
+			trace("Hit Wall");
+			if (_go_right)
+			{
+				_go_right = false;
+				_go_left = true;
+				x -= 5;
+
+			}
+			else if (_go_left)
+			{
+				_go_left = false;
+				_go_right = true;
+				x += 5;
+			}
+			
+			
+			
+		}
+		_plant_sprite.flipped = _go_left;
 		
     }
 	public function destroy()

@@ -17,7 +17,7 @@ class Player extends PhysicsEntity
 	public var flip:Bool = false;
 	private var _equip:Bool = false;
 	public var _equiped:Bool = false;
-    private var sprite:Spritemap;
+    public var sprite:Spritemap;
     private var scaleFactor:Float = .5;
 	private var _actualFuel:Float = 16;
     private var _maxFuel:Int = 16;
@@ -90,8 +90,7 @@ class Player extends PhysicsEntity
 			flip = true;
             acceleration.x = -maxVelocity.x;
         }
- 
-        if ( Input.check("right") )
+        else if ( Input.check("right") )
         {
 			flip = false;
             acceleration.x = maxVelocity.x;
@@ -99,10 +98,7 @@ class Player extends PhysicsEntity
 
 		if ( Input.check("up") && _actualFuel > 0 )
 		{   
-            //if ( !jetpackSfx.playing )
-            {
-                jetpackSfx.play( );
-            }
+            jetpackSfx.play( );
             
 			if (_actualFuel <= 70)
 			{

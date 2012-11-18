@@ -35,7 +35,7 @@ class Intro extends World
     {
         if (Input.check(Key.X)) {
             HXP.screen.color = 0x222233;
-            HXP.world=new GameWorld();
+            HXP.world=new GameWorld( "maps/map_level1b.tmx" );
         }
     }
 }
