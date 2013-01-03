@@ -21,7 +21,7 @@ class Spikes extends Entity
 	{
 		super(x, y);
         
-        _sprite = new Image("gfx/spikes.png");
+        _sprite = new Image("graphics/spikes.png");
 		
 		graphic = _sprite;
 		

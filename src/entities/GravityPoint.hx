@@ -46,10 +46,10 @@ class GravityPoint extends Entity
         
         count = Std.int( Math.random( ) * 20 );
         
-        _sprite_on = new Image("gfx/gravity_point_on.png");
-        _sprite_off = new Image("gfx/gravity_point_off.png");
-        _sprite_b_on = new Image("gfx/gravity_point_b_on.png");
-        _sprite_b_off = new Image("gfx/gravity_point_b_off.png");
+        _sprite_on = new Image("graphics/gravity_point_on.png");
+        _sprite_off = new Image("graphics/gravity_point_off.png");
+        _sprite_b_on = new Image("graphics/gravity_point_b_on.png");
+        _sprite_b_off = new Image("graphics/gravity_point_b_off.png");
         
         gravityOnSfx = new Sfx( "sfx/gravity_on.wav" );
         

@@ -20,7 +20,7 @@ class Furnace extends Entity
 	{
 		super(x, y);
         
-        _sprite = new Image("gfx/furnace_off.png");
+        _sprite = new Image("graphics/furnace_off.png");
 		
 		graphic = _sprite;
         
@@ -31,7 +31,7 @@ class Furnace extends Entity
     
     public function burnPlant( )
     {
-        _sprite = new Image( "gfx/furnace.png" );
+        _sprite = new Image( "graphics/furnace.png" );
         
         new Sfx( "sfx/burn_plant.wav" ).play( );
         

@@ -42,9 +42,8 @@ class Player extends PhysicsEntity
         
         jetpackSfx = new Sfx( "sfx/jetpack.wav" );
 	
-		sprite = new Spritemap( "gfx/chef_small.png", 24, 24 );
+		sprite = new Spritemap( "graphics/chef_small.png", 24, 24 );
 
-        
 		sprite.add( "stand", [0, 1, 2, 3, 4, 5], 10, true );               
 		sprite.add( "run", [6, 7, 8, 9, 10, 11], 20, true );
         

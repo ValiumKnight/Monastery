@@ -25,7 +25,7 @@ class Plant extends PhysicsEntity
 		_walks = walk;
 		_go_left = false;
 		_go_right = true;
-		_plant_sprite = new Spritemap("gfx/" + image, 70, 72);
+		_plant_sprite = new Spritemap("graphics/" + image, 70, 72);
         
         _plant_sprite.add( "stand", [ 0, 1, 2, 3, 4, 5,
                                       6, 7, 8, 9, 10, 11,

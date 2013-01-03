@@ -27,7 +27,7 @@ class Bullet extends PhysicsEntity
 		_deltaY = dY;
 		_angle = angle;
         
-        var sprite:Spritemap = new Spritemap("gfx/sprite_orb2.png", 21, 21);
+        var sprite:Spritemap = new Spritemap("graphics/sprite_orb2.png", 21, 21);
         
         sprite.scale = 0.5;
         

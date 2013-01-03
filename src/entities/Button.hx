@@ -20,8 +20,8 @@ class Button extends Entity
 	{
 		super(x, y);
         
-        _sprite_off = new Image("gfx/up_button.png");
-		_sprite_on = new Image("gfx/down_button.png");
+        _sprite_off = new Image("graphics/up_button.png");
+		_sprite_on = new Image("graphics/down_button.png");
 		
 		graphic = _sprite_off;
         setHitbox( _sprite_off.width, _sprite_off.height );

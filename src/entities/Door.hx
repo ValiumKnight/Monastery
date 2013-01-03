@@ -25,7 +25,7 @@ class Door extends Entity
 	{
 		super(x, y);
         
-        _sprite = new Image("gfx/door.png");
+        _sprite = new Image("graphics/door.png");
 		
 		graphic = _sprite;
         

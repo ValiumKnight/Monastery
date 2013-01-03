@@ -13,7 +13,7 @@ class FuelBar extends Entity
     {
         super( x,y );
         
-        healthbar = new Spritemap("gfx/circlehealthbar.png", 32, 32);
+        healthbar = new Spritemap("graphics/circlehealthbar.png", 32, 32);
         graphic = healthbar;
         healthbar.centerOO();
         healthbar.frame = 16;

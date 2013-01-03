@@ -20,7 +20,7 @@ class Bubble extends Entity
 	{
 		super(x, y);
         
-        _sprite = new Image("gfx/small_orb.png");
+        _sprite = new Image("graphics/small_orb.png");
 		
 		graphic = _sprite;
 	}
